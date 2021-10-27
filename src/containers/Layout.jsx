@@ -9,7 +9,11 @@ const StyledMain = styled.main`
 const Layout = ({ children }) => {
   return (
     <>
-      <header>header</header>
+      <header>
+        <a href='/search'>Search</a>
+        <a href='/landing'>Landing</a>
+        <a href='/favorites'>Favorites</a>
+      </header>
       <StyledMain>{children}</StyledMain>
       <footer>footer</footer>
     </>
