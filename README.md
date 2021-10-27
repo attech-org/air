@@ -1,6 +1,6 @@
 # Air
 
-Service for search flight tickets
+Service for search flight tickets.
 
 ## API
 
