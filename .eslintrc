@@ -41,6 +41,7 @@
     "react/no-string-refs": 2,
     "react/no-unknown-property": 2,
     "react/prefer-stateless-function": 2,
+    "react/prop-types": 0,
     "react/self-closing-comp": 2,
     "import/order": [
       2,
