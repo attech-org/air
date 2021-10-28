@@ -1,18 +1,30 @@
 import styled from "styled-components"
 
-const SearchPanelSection = styled.div`
-  display: flex;
+const StyledP = styled.p`
+  color: gray;
+  line-height: 0px;
 `
+
+const SearchPanelSection = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
 const SearchPanelFrom = styled.div`
-  margin-right: 60px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 `
+
 const SearchPanelTo = styled(SearchPanelFrom)``
 
-const StyledP = styled.p`
-  color: gray;
+const NextBtn = styled.button`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #dd0b0b9e;
 `
 
 const SearchPanel = () => {
@@ -26,6 +38,7 @@ const SearchPanel = () => {
         <StyledP>To</StyledP>
         <input type='text' placeholder='San Francisco' />
       </SearchPanelTo>
+      <NextBtn>&#8594;</NextBtn>
     </SearchPanelSection>
   )
 }
