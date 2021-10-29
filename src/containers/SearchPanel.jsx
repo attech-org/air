@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const StyledP = styled.p`
+import { MOCK } from "../MOCK"
+
+const StyledLabel = styled.label`
   color: gray;
   line-height: 0px;
 `
@@ -34,21 +36,43 @@ const NextBtn = styled.button`
 `
 
 const SearchPanel = () => {
-  const [from, setFrom] = useState("")
+  const departureCity = "London"
+  const arrivalCity = "Kyiv"
+  const [, setIncomingData] = useState([])
+  // const [inputToValue, setInputTo] = useState("")
+
+  useEffect(() => {
+    const res = MOCK
+    setIncomingData(res)
+  }, [])
 
   return (
     <SearchPanelSection>
       <InputSection>
         <SearchPanelFrom>
-          <StyledP>From</StyledP>
-          <input onChange={(e) => setFrom(e.target.value)} value={from} type='text' placeholder='Kryvyi Rih' />
+          <StyledLabel>
+            From
+            <input
+              // onChange={(e) => setInputFrom(e.target.value)}
+              // value={inputFromValue}
+              type='text'
+              placeholder='Kryvyi Rih'
+            />
+          </StyledLabel>
         </SearchPanelFrom>
         <SearchPanelTo>
-          <StyledP>To</StyledP>
-          <input type='text' placeholder='San Francisco' />
+          <StyledLabel>
+            To
+            <input
+              // onChange={(e) => setInputTo(e.target.value)}
+              // value={inputToValue}
+              type='text'
+              placeholder='San Francisco'
+            />
+          </StyledLabel>
         </SearchPanelTo>
       </InputSection>
-      <Link to='/searchresult'>
+      <Link to={`/search-result?departureCity=${departureCity}&arrivalCity=${arrivalCity}`}>
         <NextBtn>&#8594;</NextBtn>
       </Link>
     </SearchPanelSection>

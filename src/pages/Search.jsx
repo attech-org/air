@@ -1,7 +1,9 @@
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import styled from "styled-components"
 
 import Layout from "../containers/Layout"
 import SearchContainer from "../containers/Search"
+// import SearchResult from "./SearchResult"
 
 const StyledP = styled.p`
   color: white;
@@ -14,7 +16,7 @@ const StyledH1 = styled.h1`
 const SearchSection = styled.div`
   background: black;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 `
 const SearchSectionContent = styled.div`
   margin: 10px 100px;
