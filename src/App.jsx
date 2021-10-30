@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import FavoritesPage from "./pages/Favorites"
 import LandingPage from "./pages/Landing"
+import OrderPaymentPage from "./pages/OrderPayment"
 import SearchPage from "./pages/Search"
 
 const App = () => {
@@ -16,6 +17,9 @@ const App = () => {
         </Route>
         <Route path='/favorites'>
           <FavoritesPage />
+        </Route>
+        <Route path='/orderPayment'>
+          <OrderPaymentPage />
         </Route>
       </Switch>
     </Router>
