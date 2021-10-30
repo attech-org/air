@@ -2,26 +2,62 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const StyledLabel = styled.label`
+const StyledP = styled.p`
   color: gray;
-  line-height: 0px;
+  text-decoration: none;
+  margin-right: 10px;
+`
+const Arrow = styled.p`
+  color: white;
+  font-size: 19px;
+  margin-left: 2px;
+`
+
+const StyledLabel = styled.label`
+  display: flex;
+  height: 60px;
+  flex-direction: column;
+  justify-content: center;
+  color: gray;
+  line-height: 3em;
+  margin-bottom: 21px;
 `
 const InputSection = styled.div`
   display: flex;
 `
 
 const SearchPanelSection = styled.div`
+  height: 60px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 `
 
+const ButtonSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+
+  width: 100px;
+  height: 100px;
+`
+
 const SearchPanelFrom = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: flex-start;
   margin-right: 60px;
+`
+
+const StyledInput = styled.input`
+  border: none;
+  &::-webkit-input-placeholder {
+    font-weight: bold;
+    font-size: 15px;
+    color: black;
+  }
 `
 
 const SearchPanelTo = styled(SearchPanelFrom)``
@@ -30,7 +66,10 @@ const NextBtn = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #dd0b0b9e;
+  background-color: #ff0000d5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 `
 
 const SearchPanel = () => {
@@ -46,7 +85,7 @@ const SearchPanel = () => {
         <SearchPanelFrom>
           <StyledLabel>
             From
-            <input
+            <StyledInput
               onChange={(e) => onDepartureInputChange(e.target.value)}
               value={departureCityInput}
               type='text'
@@ -57,7 +96,7 @@ const SearchPanel = () => {
         <SearchPanelTo>
           <StyledLabel>
             To
-            <input
+            <StyledInput
               onChange={(e) => onArrivalInputChange(e.target.value)}
               value={arrivalCityInput}
               type='text'
@@ -66,8 +105,14 @@ const SearchPanel = () => {
           </StyledLabel>
         </SearchPanelTo>
       </InputSection>
+
       <Link to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}`}>
-        <NextBtn>&#8594;</NextBtn>
+        <ButtonSection>
+          <NextBtn>
+            <Arrow>&#8594;</Arrow>
+          </NextBtn>
+          <StyledP>Next</StyledP>
+        </ButtonSection>
       </Link>
     </SearchPanelSection>
   )

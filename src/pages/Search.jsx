@@ -7,10 +7,12 @@ import SearchContainer from "../containers/Search"
 
 const StyledP = styled.p`
   color: white;
+  margin-top: 50px;
 `
 
 const StyledH1 = styled.h1`
   color: white;
+  margin-bottom: 35px;
 `
 
 const SearchSection = styled.div`
@@ -19,7 +21,7 @@ const SearchSection = styled.div`
   height: 100vh;
 `
 const SearchSectionContent = styled.div`
-  margin: 10px 100px;
+  margin: 160px 100px;
 `
 
 const SearchPage = () => {
