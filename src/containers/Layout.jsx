@@ -14,6 +14,7 @@ const Layout = ({ children }) => {
         <Link to='/'>SearchPage</Link>
         <Link to='/landing'>LandingPage</Link>
         <Link to='/favorites'>FavoritesPage</Link>
+        <Link to='/blog'>Blog</Link>
 
         {/* <a href='/search'>Search</a>
           <a href='/landing'>Landing</a>
