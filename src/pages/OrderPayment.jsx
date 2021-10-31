@@ -3,9 +3,8 @@ import styled from "styled-components"
 import Layout from "../containers/Layout"
 import OrderPaymentContainer from "../containers/OrderPaymentContainer"
 
-const Main = styled.main`
+const Main = styled.div`
   width: 100%;
-  background: rgba(0, 0, 0, 1);
   padding: 0 90px 35px;
 `
 

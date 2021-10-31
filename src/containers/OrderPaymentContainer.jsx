@@ -1,11 +1,12 @@
 import styled from "styled-components"
 
-import BookingSummaryWrapper from "../components/BookingSummaryWrapper"
-import FormWrapper from "../components/FormWrapper"
+import BookingSummary from "./BookingSummary"
+import OrderForm from "./Form"
 
-const OrderPaymentWrapper = styled.div`
-  background: rgba(255, 255, 255, 1);
+const OrderPayment = styled.div`
   display: flex;
+  background: rgba(30, 30, 30, 1);
+  border-radius: 5px 0 0 5px;
 `
 
 const Title = styled.h1`
@@ -20,10 +21,10 @@ const OrderPaymentContainer = () => {
   return (
     <>
       <Title>Payment Options</Title>
-      <OrderPaymentWrapper>
-        <FormWrapper />
-        <BookingSummaryWrapper />
-      </OrderPaymentWrapper>
+      <OrderPayment>
+        <OrderForm />
+        <BookingSummary />
+      </OrderPayment>
     </>
   )
 }

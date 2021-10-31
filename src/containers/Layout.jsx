@@ -5,6 +5,7 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 20, 1);
 `
 
 const Layout = ({ children }) => {
