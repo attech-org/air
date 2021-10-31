@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
+const Bg = styled.div`
+  background-image: ${(props) => `url(${props.bgSrc})`};
+  background-size: cover;
+  background-repeat: no-repeat;
+`
+
 const StyledMain = styled.main`
   display: flex;
   align-items: center;
@@ -8,9 +14,9 @@ const StyledMain = styled.main`
   flex-direction: column;
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, bgSrc }) => {
   return (
-    <>
+    <Bg bgSrc={bgSrc}>
       <header>
         <Link to='/'>SearchPage</Link>
         <Link to='/landing'>LandingPage</Link>
@@ -23,7 +29,7 @@ const Layout = ({ children }) => {
       </header>
       <StyledMain>{children}</StyledMain>
       <footer>footer</footer>
-    </>
+    </Bg>
   )
 }
 

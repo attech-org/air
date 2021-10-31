@@ -1,9 +1,10 @@
 import Layout from "../containers/Layout"
+import PostContainer from "../containers/Post"
 
 const PostPage = ({ match }) => {
   return (
     <Layout>
-      <div>Single post: {match.params.id}</div>
+      <PostContainer id={match.params.id} />
     </Layout>
   )
 }
