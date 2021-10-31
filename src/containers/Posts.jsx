@@ -8,6 +8,13 @@ const Grid = styled.div`
   flex-wrap: wrap;
 `
 
+const Spinner = styled.div`
+  width: 100%;
+  height: 100vh;
+  color: white;
+  font-size: 40px;
+`
+
 const SOURCE_URL = "https://api.mockaroo.com/api/febabdf0?count=50&key=6b9b6f90"
 
 const PostsContainer = () => {
@@ -25,6 +32,7 @@ const PostsContainer = () => {
 
   return (
     <Grid>
+      {!posts.length && <Spinner>Loading...</Spinner>}
       {posts.map(({ authorAvatar, authorName, previewImg, title, date, id }) => (
         <PostCard
           key={id}
