@@ -170,7 +170,10 @@ const SearchResultContainer = (props) => {
           <FlightDurationP>{flightDuration().toString()}</FlightDurationP>
         </StopsIndicator>
         <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
-        <TimeP>${Math.ceil(props.price)}</TimeP>
+        <TimeP>
+          {Math.ceil(props.price)}
+          {props.priceCurrency || "USD"}
+        </TimeP>
         <BookBtn>
           <BookP>Book Now</BookP>
         </BookBtn>

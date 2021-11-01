@@ -15,7 +15,7 @@ const StyledH2 = styled.h2`
 const MainSection = styled.div`
   background: black;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 `
 const ContentSection = styled.div`
   margin: 34px 70px;
@@ -75,6 +75,7 @@ const SearchResultPage = () => {
                 departureDate={el.departureDate}
                 flightDurationMinutes={el.flightDurationMinutes}
                 price={el.price}
+                priceCurrency={el.priceCurrency}
               />
             ))}
         </ContentSection>
