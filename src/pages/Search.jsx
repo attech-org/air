@@ -13,6 +13,7 @@ const StyledP = styled.p`
 const StyledH1 = styled.h1`
   color: white;
   margin-bottom: 35px;
+  font-size: 37px;
 `
 
 const SearchSection = styled.div`
@@ -21,7 +22,7 @@ const SearchSection = styled.div`
   height: 100vh;
 `
 const SearchSectionContent = styled.div`
-  margin: 160px 100px;
+  margin: 160px 70px;
 `
 
 const SearchPage = () => {

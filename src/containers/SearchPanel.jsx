@@ -9,8 +9,6 @@ const StyledP = styled.p`
 `
 const Arrow = styled.p`
   color: white;
-  font-size: 19px;
-  margin-left: 2px;
 `
 
 const StyledLabel = styled.label`
@@ -62,22 +60,29 @@ const StyledInput = styled.input`
 
 const SearchPanelTo = styled(SearchPanelFrom)``
 
-const NextBtn = styled.button`
+const NextBtn = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #ff0000d5;
+  box-shadow: 0px 3px 5px 1px #00000058;
+  border: solid 1px black;
+  background-color: #cf0000;
   cursor: pointer;
   display: flex;
+  justify-content: center;
   align-items: center;
+`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `
 
 const SearchPanel = () => {
   // const departureCity = "London"
   // const arrivalCity = "Kyiv"
 
-  const [departureCityInput, onDepartureInputChange] = useState("")
-  const [arrivalCityInput, onArrivalInputChange] = useState("")
+  const [departureCityInput, onDepartureInputChange] = useState("Monino")
+  const [arrivalCityInput, onArrivalInputChange] = useState("Ranong")
 
   return (
     <SearchPanelSection>
@@ -106,14 +111,14 @@ const SearchPanel = () => {
         </SearchPanelTo>
       </InputSection>
 
-      <Link to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}`}>
+      <StyledLink to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}`}>
         <ButtonSection>
           <NextBtn>
             <Arrow>&#8594;</Arrow>
           </NextBtn>
           <StyledP>Next</StyledP>
         </ButtonSection>
-      </Link>
+      </StyledLink>
     </SearchPanelSection>
   )
 }
