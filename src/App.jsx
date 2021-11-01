@@ -2,8 +2,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import FavoritesPage from "./pages/Favorites"
 import LandingPage from "./pages/Landing"
+import PostPage from "./pages/Post"
+import PostsPage from "./pages/Posts"
 import SearchPage from "./pages/Search"
 import SearchResultPage from "./pages/SearchResult"
+
+import "./reset.css"
 
 const App = () => {
   return (
@@ -20,6 +24,13 @@ const App = () => {
         </Route>
         <Route path='/search-result'>
           <SearchResultPage />
+        </Route>
+        <Route path='/blog/:id' render={PostPage} />
+        <Route path='/blog'>
+          <PostsPage />
+        </Route>
+        <Route path='*'>
+          <div>THIS PAGE NOT EXIST</div>
         </Route>
       </Switch>
     </Router>
