@@ -3,7 +3,7 @@ import styled from "styled-components"
 import visaLogo from "../assets/img/Visa_Inc._logo.svg.png"
 
 const FormCapacity = styled.div`
-  padding: 50px 70px;
+  padding: 80px 70px;
   width: 60%;
   border-radius: 5px;
   background: rgba(255, 255, 255, 1);
@@ -11,7 +11,7 @@ const FormCapacity = styled.div`
 
 const H2 = styled.h2`
   font-size: 1.5em;
-  margin: 0;
+  margin: 0 0 20px 0;
 `
 
 const ImgLogo = styled.img`
@@ -42,17 +42,17 @@ const PrevLink = styled.a`
   }
 `
 
-const EnvelopBlock = styled.div`
+const BlockEnvelop = styled.div`
   display: flex;
   margin-bottom: 35px;
 `
 
-const FormEnvelop = styled.div`
+const FormEnvelop = styled.form`
   display: flex;
   margin-top: 50px;
 `
 
-const Label = styled.label`
+export const Label = styled.label`
   color: rgba(172, 170, 170, 1);
   font-size: 0.85em;
 `
@@ -91,17 +91,17 @@ const OrderForm = () => {
 
   return (
     <FormCapacity>
-      <EnvelopBlock>
+      <BlockEnvelop>
         <PrevLink to='/'>&#10510;</PrevLink>
         <H2>Payment method</H2>
-      </EnvelopBlock>
+      </BlockEnvelop>
       <ImgLogo src={visaLogo} />
       <FormEnvelop>
         <ColLeft>
           <Label htmlFor='cardholderName'>Cardholder Name</Label>
           <Input type='text' placeholder='Lex Shah' id='cardholderName' />
           <Label htmlFor='cardNumber'>Card Number</Label>
-          <Input type='password' id='cardNumber' />
+          <Input type='password' maxLength='16' id='cardNumber' />
           <LabelAgree htmlFor='agreement'>
             <Checkbox type='checkbox' id='agreement' />I accept the terms and conditions
           </LabelAgree>
@@ -110,7 +110,7 @@ const OrderForm = () => {
           <Label htmlFor='expicyCard'>Expicy</Label>
           <Input type='text' id='expicyCard' />
           <Label htmlFor='cvvCard'>CVV</Label>
-          <Input type='password' id='cvvCard' />
+          <Input type='password' maxLength='3' id='cvvCard' />
         </ColRight>
       </FormEnvelop>
     </FormCapacity>
