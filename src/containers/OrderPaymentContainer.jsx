@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 import BookingSummary from "./BookingSummary"
@@ -18,12 +19,40 @@ const Title = styled.h1`
 `
 
 const OrderPaymentContainer = () => {
+  const [orderData, setOrderData] = useState({
+    ticketPrice: 150,
+    currency: "USD",
+    taxesPrice: 15,
+    subtotalPrice: 145,
+    servicePrice: 20,
+    totalPrice: 190,
+  })
+
+  const handleOrderForm = (data) => {
+    setOrderData({
+      ...orderData,
+      ...data,
+    })
+  }
+
+  const handleCheckOut = () => {
+    console.log(orderData)
+  }
+
   return (
     <>
       <Title>Payment Options</Title>
       <OrderPayment>
-        <OrderForm />
-        <BookingSummary />
+        <OrderForm onChangeForm={handleOrderForm} />
+        <BookingSummary
+          ticketPrice={orderData.ticketPrice}
+          currency={orderData.currency}
+          handleCheckOutClick={handleCheckOut}
+          taxesPrice={orderData.taxesPrice}
+          subtotalPrice={orderData.subtotalPrice}
+          servicePrice={orderData.servicePrice}
+          totalPrice={orderData.totalPrice}
+        />
       </OrderPayment>
     </>
   )

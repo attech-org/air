@@ -4,7 +4,7 @@ import Layout from "../containers/Layout"
 import OrderPaymentContainer from "../containers/OrderPaymentContainer"
 
 const Main = styled.div`
-  width: 100%;
+  width: 80%;
   padding: 0 90px 35px;
 `
 
