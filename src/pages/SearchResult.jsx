@@ -5,7 +5,6 @@ import styled from "styled-components"
 
 import Layout from "../containers/Layout"
 import SearchResultContainer from "../containers/SearchResult"
-import { MOCK } from "../MOCK"
 
 const StyledH2 = styled.h2`
   color: white;
@@ -38,7 +37,10 @@ const BackBtn = styled.div`
 
 const Arrow = styled.p`
   color: white;
+  margin-bottom: 5px;
+  font-size: 22px;
 `
+const SOURCE_URL = "https://api.mockaroo.com/api/841e8e60?count=1000&key=6b9b6f90"
 const SearchResultPage = () => {
   const query = new URLSearchParams(useLocation().search || "")
   const departureCityInput = query.get("departureCity")
@@ -47,8 +49,13 @@ const SearchResultPage = () => {
   const [incomingData, setIncomingData] = useState([])
 
   useEffect(() => {
-    const res = MOCK
-    setIncomingData(res)
+    const fetchData = async () => {
+      const res = await fetch(SOURCE_URL)
+      const data = await res.json()
+      setIncomingData(data)
+    }
+    // const res = MOCK
+    fetchData()
   }, [])
   return (
     <Layout>
