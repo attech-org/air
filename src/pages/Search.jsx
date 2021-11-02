@@ -1,9 +1,7 @@
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import styled from "styled-components"
 
 import Layout from "../containers/Layout"
 import SearchContainer from "../containers/Search"
-// import SearchResult from "./SearchResult"
 
 const StyledP = styled.p`
   color: white;

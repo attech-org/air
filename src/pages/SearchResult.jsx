@@ -65,6 +65,14 @@ const SearchResultPage = () => {
     }
     fetchData()
   }, [])
+
+  const filteredData = incomingData.filter(
+    ({ departureCity, arriveCity, departureDate }) =>
+      departureCity.includes(departureCityInput) &&
+      arriveCity.includes(arrivalCityInput) &&
+      (!departureStartDateInput || new Date(departureDate) >= new Date(departureStartDateInput)) &&
+      (!departureEndDateInput || new Date(departureDate) <= new Date(departureEndDateInput))
+  )
   return (
     <Layout>
       <MainSection>
@@ -76,15 +84,8 @@ const SearchResultPage = () => {
             </BackBtn>
           </Link>
           {!incomingData.length && <Spinner>Loading . . .</Spinner>}
-          {incomingData
-            .filter(
-              ({ departureCity, arriveCity, departureDate }) =>
-                departureCity.includes(departureCityInput) &&
-                arriveCity.includes(arrivalCityInput) &&
-                new Date(departureDate) >= new Date(departureStartDateInput) &&
-                new Date(departureDate) <= new Date(departureEndDateInput)
-            )
-            .map((el) => (
+          {filteredData.length ? (
+            filteredData.map((el) => (
               <SearchResultContainer
                 key={el.id}
                 departureCity={el.departureCity}
@@ -96,7 +97,10 @@ const SearchResultPage = () => {
                 price={el.price}
                 priceCurrency={el.priceCurrency}
               />
-            ))}
+            ))
+          ) : (
+            <Spinner>No tickets available</Spinner>
+          )}
         </ContentSection>
       </MainSection>
     </Layout>

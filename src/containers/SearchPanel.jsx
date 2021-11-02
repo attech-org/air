@@ -4,7 +4,6 @@ import styled from "styled-components"
 
 const StyledP = styled.p`
   color: gray;
-  text-decoration: none;
   margin-right: 10px;
 `
 const Arrow = styled.p`
@@ -19,8 +18,7 @@ const StyledLabel = styled.label`
   flex-direction: column;
   justify-content: center;
   color: gray;
-  line-height: 3em;
-  margin-bottom: 21px;
+  line-height: 2em;
 `
 const InputSection = styled.div`
   display: flex;
@@ -34,16 +32,6 @@ const SearchPanelSection = styled.div`
   justify-content: space-between;
 `
 
-const ButtonSection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row-reverse;
-
-  width: 100px;
-  height: 100px;
-`
-
 const SearchPanelFrom = styled.div`
   display: flex;
   flex-direction: column;
@@ -53,13 +41,15 @@ const SearchPanelFrom = styled.div`
 
 const StyledInput = styled.input`
   border: none;
+  padding: 10px 0px 10px 10px;
   &::-webkit-input-placeholder {
-    font-weight: bold;
     font-size: 15px;
     color: black;
   }
 `
-
+const FromTo = styled.p`
+  padding-left: 10px;
+`
 const SearchPanelTo = styled(SearchPanelFrom)``
 
 const NextBtn = styled.div`
@@ -76,12 +66,16 @@ const NextBtn = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+
+  width: 100px;
+  height: 100px;
 `
 
 const SearchPanel = () => {
-  // const departureCity = "London"
-  // const arrivalCity = "Kyiv"
-
   const [departureCityInput, onDepartureInputChange] = useState("London")
   const [arrivalCityInput, onArrivalInputChange] = useState("Kyiv")
 
@@ -101,37 +95,35 @@ const SearchPanel = () => {
       <InputSection>
         <SearchPanelFrom>
           <StyledLabel>
-            From
+            <FromTo>From</FromTo>
             <StyledInput onChange={handleFromChange} value={departureCityInput} type='text' placeholder='Kryvyi Rih' />
           </StyledLabel>
         </SearchPanelFrom>
         <SearchPanelTo>
           <StyledLabel>
-            To
+            <FromTo> To </FromTo>
             <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' placeholder='San Francisco' />
           </StyledLabel>
         </SearchPanelTo>
       </InputSection>
 
       <StyledLabel>
-        Start date
+        <FromTo> Start date </FromTo>
         <StyledInput onChange={handleStartDateChange} value={departureStartDateInput} type='date' />
       </StyledLabel>
 
       <StyledLabel>
-        End date
+        <FromTo> End date </FromTo>
         <StyledInput onChange={handleEndDateChange} value={departureEndDateInput} type='date' />
       </StyledLabel>
 
       <StyledLink
         to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}&departureStartDate=${departureStartDateInput}&departureEndDate=${departureEndDateInput}`}
       >
-        <ButtonSection>
-          <NextBtn>
-            <Arrow>&#8594;</Arrow>
-          </NextBtn>
-          <StyledP>Next</StyledP>
-        </ButtonSection>
+        <NextBtn>
+          <Arrow>&#8594;</Arrow>
+        </NextBtn>
+        <StyledP>Next</StyledP>
       </StyledLink>
     </SearchPanelSection>
   )

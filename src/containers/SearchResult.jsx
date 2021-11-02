@@ -184,7 +184,7 @@ const SearchResultContainer = (props) => {
             <Dot />
             <Dot />
           </StopsDiv>
-          <FlightDurationP>{flightDuration().toString()}</FlightDurationP>
+          <FlightDurationP>{flightDuration()}</FlightDurationP>
         </StopsIndicator>
         <DateBox>
           <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
