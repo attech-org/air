@@ -9,6 +9,8 @@ const StyledP = styled.p`
 `
 const Arrow = styled.p`
   color: white;
+  margin-bottom: 5px;
+  font-size: 22px;
 `
 
 const StyledLabel = styled.label`
@@ -81,8 +83,8 @@ const SearchPanel = () => {
   // const departureCity = "London"
   // const arrivalCity = "Kyiv"
 
-  const [departureCityInput, onDepartureInputChange] = useState("Monino")
-  const [arrivalCityInput, onArrivalInputChange] = useState("Ranong")
+  const [departureCityInput, onDepartureInputChange] = useState("b")
+  const [arrivalCityInput, onArrivalInputChange] = useState("b")
 
   return (
     <SearchPanelSection>

@@ -12,6 +12,7 @@ const MainSection = styled.div`
   height: 153px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  margin-top: -5px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -22,6 +23,7 @@ const StyledBoxDepartureArrive = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  line-height: 2em;
 `
 const StyledIconBox = styled.div`
   width: 240px;
@@ -92,13 +94,14 @@ const StopsIndicator = styled.div`
   justify-content: flex-end;
   flex-direction: column;
   width: 165px;
-  height: 85%;
+  height: 68%;
 `
 const StopsDiv = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 28px;
 `
 const StopsP = styled.p`
   width: 55px;
@@ -153,7 +156,7 @@ const SearchResultContainer = (props) => {
       </MainSection>
       <ChooseFlightSection>
         <CompanyInfo>
-          <CompanyLogoImg src={props.flightCompanyLogo} alt='Logo' />
+          <CompanyLogoImg src={props.flightCompanyLogo || "https://via.placeholder.com/150"} alt='Logo' />
           <StyledP>{props.flightCompany}</StyledP>
         </CompanyInfo>
         <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
