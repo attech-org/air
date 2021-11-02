@@ -66,6 +66,17 @@ const CompanyLogoImg = styled.img`
   margin-right: 10px;
   border: 1px solid black;
 `
+
+const DateBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 2em;
+  width: 165px;
+  height: 68%;
+`
+
 const FlightDurationP = styled.p`
   font-size: 14px;
   color: gray;
@@ -159,7 +170,10 @@ const SearchResultContainer = (props) => {
           <CompanyLogoImg src={props.flightCompanyLogo || "https://via.placeholder.com/150"} alt='Logo' />
           <StyledP>{props.flightCompany}</StyledP>
         </CompanyInfo>
-        <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
+        <DateBox>
+          <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
+          <FlightDurationP>{departureTime.toDateString()}</FlightDurationP>
+        </DateBox>
         <StopsIndicator>
           <StopsDiv>
             <Dot />
@@ -172,7 +186,10 @@ const SearchResultContainer = (props) => {
           </StopsDiv>
           <FlightDurationP>{flightDuration().toString()}</FlightDurationP>
         </StopsIndicator>
-        <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
+        <DateBox>
+          <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
+          <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
+        </DateBox>
         <TimeP>
           {Math.ceil(props.price)}
           {props.priceCurrency || "USD"}

@@ -25,7 +25,6 @@ const BackBtn = styled.div`
   height: 40px;
   border-radius: 50%;
   box-shadow: 0px 3px 5px 1px #00000058;
-  border: solid 1px black;
   background-color: #cf0000;
   cursor: pointer;
   display: flex;
@@ -40,11 +39,21 @@ const Arrow = styled.p`
   margin-bottom: 5px;
   font-size: 22px;
 `
-const SOURCE_URL = "https://api.mockaroo.com/api/841e8e60?count=1000&key=6b9b6f90"
+const Spinner = styled.p`
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  margin-top: 93px;
+`
+
+const SOURCE_URL =
+  "https://gist.githubusercontent.com/alexandrtovmach/80574d5e0979a3e8f405304839d057e3/raw/948b41de676e7e14b68968987f8f264cce52c922/air_routes.json"
 const SearchResultPage = () => {
   const query = new URLSearchParams(useLocation().search || "")
   const departureCityInput = query.get("departureCity")
   const arrivalCityInput = query.get("arrivalCity")
+  const departureStartDateInput = query.get("departureStartDate")
+  const departureEndDateInput = query.get("departureEndDate")
 
   const [incomingData, setIncomingData] = useState([])
 
@@ -54,7 +63,6 @@ const SearchResultPage = () => {
       const data = await res.json()
       setIncomingData(data)
     }
-    // const res = MOCK
     fetchData()
   }, [])
   return (
@@ -67,10 +75,14 @@ const SearchResultPage = () => {
               <Arrow>&#8592;</Arrow>
             </BackBtn>
           </Link>
+          {!incomingData.length && <Spinner>Loading . . .</Spinner>}
           {incomingData
             .filter(
-              ({ departureCity, arriveCity }) =>
-                departureCity.includes(departureCityInput) && arriveCity.includes(arrivalCityInput)
+              ({ departureCity, arriveCity, departureDate }) =>
+                departureCity.includes(departureCityInput) &&
+                arriveCity.includes(arrivalCityInput) &&
+                new Date(departureDate) >= new Date(departureStartDateInput) &&
+                new Date(departureDate) <= new Date(departureEndDateInput)
             )
             .map((el) => (
               <SearchResultContainer
