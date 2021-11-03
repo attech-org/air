@@ -84,23 +84,21 @@ const SearchResultPage = () => {
             </BackBtn>
           </Link>
           {!incomingData.length && <Spinner>Loading . . .</Spinner>}
-          {filteredData.length ? (
-            filteredData.map((el) => (
-              <SearchResultContainer
-                key={el.id}
-                departureCity={el.departureCity}
-                arriveCity={el.arriveCity}
-                flightCompany={el.flightCompany}
-                flightCompanyLogo={el.flightCompanyLogo}
-                departureDate={el.departureDate}
-                flightDurationMinutes={el.flightDurationMinutes}
-                price={el.price}
-                priceCurrency={el.priceCurrency}
-              />
-            ))
-          ) : (
-            <Spinner>No tickets available</Spinner>
-          )}
+          {filteredData.length
+            ? filteredData.map((el) => (
+                <SearchResultContainer
+                  key={el.id}
+                  departureCity={el.departureCity}
+                  arriveCity={el.arriveCity}
+                  flightCompany={el.flightCompany}
+                  flightCompanyLogo={el.flightCompanyLogo}
+                  departureDate={el.departureDate}
+                  flightDurationMinutes={el.flightDurationMinutes}
+                  price={el.price}
+                  priceCurrency={el.priceCurrency}
+                />
+              ))
+            : incomingData.length && <Spinner>No tickets available</Spinner>}
         </ContentSection>
       </MainSection>
     </Layout>
