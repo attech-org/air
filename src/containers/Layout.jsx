@@ -24,6 +24,7 @@ const Layout = ({ children, bgSrc }) => {
         <Link to='/favorites'>FavoritesPage</Link>
         <Link to='/orderPayment'>OrderPaymentPage</Link>
         <Link to='/blog'>Blog</Link>
+        <Link to='/tourpagesingle'>Tours</Link>
       </header>
       <StyledMain>{children}</StyledMain>
       <footer>footer</footer>

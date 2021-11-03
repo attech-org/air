@@ -35,9 +35,7 @@ const OrderPaymentContainer = () => {
     })
   }
 
-  const handleCheckOut = () => {
-    console.log(orderData)
-  }
+  const handleCheckOut = () => {}
 
   return (
     <>
