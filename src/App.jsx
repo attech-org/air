@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import FavoritesPage from "./pages/Favorites"
 import LandingPage from "./pages/Landing"
+import OrderPaymentPage from "./pages/OrderPayment"
 import PostPage from "./pages/Post"
 import PostsPage from "./pages/Posts"
 import SearchPage from "./pages/Search"
@@ -24,6 +25,9 @@ const App = () => {
         </Route>
         <Route path='/search-result'>
           <SearchResultPage />
+        </Route>
+        <Route path='/orderPayment'>
+          <OrderPaymentPage />
         </Route>
         <Route path='/blog/:id' render={PostPage} />
         <Route path='/blog'>
