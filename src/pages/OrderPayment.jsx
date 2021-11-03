@@ -1,0 +1,21 @@
+import styled from "styled-components"
+
+import Layout from "../containers/Layout"
+import OrderPaymentContainer from "../containers/OrderPaymentContainer"
+
+const Main = styled.div`
+  width: 80%;
+  padding: 0 90px 35px;
+`
+
+const OrderPaymentPage = () => {
+  return (
+    <Layout>
+      <Main>
+        <OrderPaymentContainer />
+      </Main>
+    </Layout>
+  )
+}
+
+export default OrderPaymentPage

@@ -11,6 +11,7 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 20, 1);
   flex-direction: column;
 `
 
@@ -21,11 +22,8 @@ const Layout = ({ children, bgSrc }) => {
         <Link to='/'>SearchPage</Link>
         <Link to='/landing'>LandingPage</Link>
         <Link to='/favorites'>FavoritesPage</Link>
+        <Link to='/orderPayment'>OrderPaymentPage</Link>
         <Link to='/blog'>Blog</Link>
-
-        {/* <a href='/search'>Search</a>
-          <a href='/landing'>Landing</a>
-          <a href='/favorites'>Favorites</a> */}
       </header>
       <StyledMain>{children}</StyledMain>
       <footer>footer</footer>
