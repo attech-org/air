@@ -36,6 +36,7 @@ const OrderPaymentContainer = () => {
   }
 
   const handleCheckOut = () => {
+    // eslint-disable-next-line no-console
     console.log(orderData)
   }
 

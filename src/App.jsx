@@ -6,6 +6,7 @@ import OrderPaymentPage from "./pages/OrderPayment"
 import PostPage from "./pages/Post"
 import PostsPage from "./pages/Posts"
 import SearchPage from "./pages/Search"
+import SearchResultPage from "./pages/SearchResult"
 
 import "./reset.css"
 
@@ -21,6 +22,9 @@ const App = () => {
         </Route>
         <Route path='/favorites'>
           <FavoritesPage />
+        </Route>
+        <Route path='/search-result'>
+          <SearchResultPage />
         </Route>
         <Route path='/orderPayment'>
           <OrderPaymentPage />
