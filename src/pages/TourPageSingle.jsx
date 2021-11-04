@@ -16,7 +16,6 @@ const TourPageSingle = ({ tourId }) => {
     fetchData()
   }, [tourId])
 
-  console.log(backendData)
   return (
     <>
       <Layout>
