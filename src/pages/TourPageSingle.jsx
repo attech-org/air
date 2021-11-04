@@ -1,38 +1,30 @@
 import { useEffect, useState } from "react"
-import styled from "styled-components"
+import { useLocation } from "react-router"
 
 import Layout from "../containers/Layout"
-import { MOCK } from "../MOCK"
+import TourPageSingleContainer from "../containers/TourPageSingle"
 
-const StyledH1 = styled.h1`
-  color: white;
-`
-const MainSection = styled.section`
-  background-image: ${(props) => `url(${props.bgSrc})`};
-  width: 100%;
-  min-height: 100vh;
-`
+const SOURCE_URL = "https://my.api.mockaroo.com/tours/:id?key=6b9b6f90"
+const TourPageSingle = ({ match }) => {
+  const query = new URLSearchParams(useLocation().search || "")
+  const tourId = query.get("tourId")
 
-const TourPageSingle = () => {
   const [backendData, onBackendDataChange] = useState([])
 
   useEffect(() => {
-    onBackendDataChange(MOCK)
-  }, [])
+    const fetchData = async () => {
+      const res = await fetch(SOURCE_URL)
+      const data = await res.json()
+      onBackendDataChange(data[tourId])
+      console.log(data)
+    }
+    fetchData()
+  }, [tourId])
 
   return (
     <>
       <Layout>
-        {backendData.map((el) => (
-          <MainSection bgSrc={el.backgroundSrc} key={el.id}>
-            <StyledH1>{el.title}</StyledH1>
-            <StyledH1>{el.location}</StyledH1>
-            <StyledH1>{el.country}</StyledH1>
-            <StyledH1>{el.videoUrl}</StyledH1>
-            <StyledH1>{el.videoUrl}</StyledH1>
-            <StyledH1>{el.wikiPage}</StyledH1>
-          </MainSection>
-        ))}
+        <TourPageSingleContainer id={match.params.id} {...backendData} />
       </Layout>
     </>
   )
