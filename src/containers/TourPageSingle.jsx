@@ -58,30 +58,30 @@ const BottomSection = styled.section`
 const InfoBox = styled.div``
 const StyledA = styled.a``
 const StyledWikiA = styled.a``
-const TourPageSingleContainer = ({ id, ...el }) => {
+const TourPageSingleContainer = ({ id, backgroundSrc, title, location, country, videoUrl, wikiPage }) => {
   return (
     <>
-      <MainSection bgSrc={el.backgroundSrc} key={id}>
+      <MainSection bgSrc={backgroundSrc}>
         <Content>
-          <TitleH1>{el.title}</TitleH1>
-          <LocationP>{el.location}</LocationP>
-          <CountryP>{el.country}</CountryP>
+          <TitleH1>{title}</TitleH1>
+          <LocationP>{location}</LocationP>
+          <CountryP>{country}</CountryP>
           <BottomSection>
             <BtnBox>
-              <StyledLink to={`/tourpagesingle?tourId=${id - 1}`}>
+              <StyledLink to={`/tourpagesingle/${id + 1}`}>
                 <BackBtn>
                   <Arrow>&#8592;</Arrow>
                 </BackBtn>
               </StyledLink>
-              <StyledLink to={`/tourpagesingle?tourId=${id + 1}`}>
+              <StyledLink to={`/tourpagesingle/${id - 1}`}>
                 <BackBtn>
                   <Arrow>&#8594;</Arrow>
                 </BackBtn>
               </StyledLink>
             </BtnBox>
             <InfoBox>
-              <StyledA>{el.videoUrl}</StyledA>
-              <StyledWikiA href={el.wikiPage}>More Info</StyledWikiA>
+              <StyledA>{videoUrl}</StyledA>
+              <StyledWikiA href={wikiPage}>More Info</StyledWikiA>
             </InfoBox>
           </BottomSection>
         </Content>
