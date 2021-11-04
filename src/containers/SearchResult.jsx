@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 import icon from "../assets/icons/airplane-icon.png"
@@ -85,7 +86,7 @@ const TimeP = styled.p`
   font-weight: bold;
   font-size: 20px;
 `
-const BookBtn = styled.div`
+const BookBtn = styled(Link)`
   border: 3px solid #d30000;
   width: 150px;
   height: 35px;
@@ -93,10 +94,12 @@ const BookBtn = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-decoration: none:
 `
 const BookP = styled.p`
   color: #d30000;
   font-weight: bold;
+  text-decoration: none;
 `
 
 const StopsIndicator = styled.div`
@@ -194,7 +197,7 @@ const SearchResultContainer = (props) => {
           {Math.ceil(props.price)}
           {props.priceCurrency || "USD"}
         </TimeP>
-        <BookBtn>
+        <BookBtn to={`/orderPayment?price=${props.price}&priceCurrency=${props.priceCurrency}`}>
           <BookP>Book Now</BookP>
         </BookBtn>
       </ChooseFlightSection>

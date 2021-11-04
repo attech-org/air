@@ -70,7 +70,6 @@ const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   flex-direction: row-reverse;
-
   width: 100px;
   height: 100px;
 `

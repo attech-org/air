@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form"
+import { useHistory } from "react-router-dom"
 import styled from "styled-components"
 
 import visaLogo from "../assets/img/Visa_Inc._logo.svg.png"
@@ -96,13 +97,15 @@ const Input = styled.input`
   }
 `
 
-const OrderForm = ({ onChangeForm }) => {
+const OrderForm = ({ onChangeForm, children }) => {
   const { register, handleSubmit } = useForm({ mode: "onChange" })
 
+  // eslint-disable-next-line prefer-const
+  let history = useHistory()
   return (
     <FormCapacity>
       <BlockEnvelop>
-        <PrevLink>&#10510;</PrevLink>
+        <PrevLink onClick={() => history.goBack()}>&#8592;{children}</PrevLink>
         <H2>Payment method</H2>
       </BlockEnvelop>
       <ImgLogo src={visaLogo} />
