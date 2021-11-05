@@ -7,6 +7,7 @@ import PostPage from "./pages/Post"
 import PostsPage from "./pages/Posts"
 import SearchPage from "./pages/Search"
 import SearchResultPage from "./pages/SearchResult"
+import TourPageSingle from "./pages/TourPageSingle"
 
 import "./reset.css"
 
@@ -33,6 +34,8 @@ const App = () => {
         <Route path='/blog'>
           <PostsPage />
         </Route>
+        <Route path='/tours/:id' render={({ match }) => <TourPageSingle tourId={match.params.id} />} />
+
         <Route path='*'>
           <div>THIS PAGE NOT EXIST</div>
         </Route>

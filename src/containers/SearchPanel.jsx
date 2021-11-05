@@ -1,15 +1,13 @@
 import { useState } from "react"
+import DatePicker from "react-date-picker"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+
+import ArrowButton from "../components/ArrowButton"
 
 const StyledP = styled.p`
   color: gray;
   margin-right: 10px;
-`
-const Arrow = styled.p`
-  color: white;
-  margin-bottom: 5px;
-  font-size: 22px;
 `
 
 const StyledLabel = styled.label`
@@ -47,22 +45,11 @@ const StyledInput = styled.input`
     color: black;
   }
 `
+
 const FromTo = styled.p`
   padding-left: 10px;
 `
 const SearchPanelTo = styled(SearchPanelFrom)``
-
-const NextBtn = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0px 3px 5px 1px #00000058;
-  background-color: #cf0000;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -70,7 +57,6 @@ const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   flex-direction: row-reverse;
-
   width: 100px;
   height: 100px;
 `
@@ -85,11 +71,12 @@ const SearchPanel = () => {
   const handleFromChange = (e) => onDepartureInputChange(e.target.value)
   const handleToChange = (e) => onArrivalInputChange(e.target.value)
   const handleStartDateChange = (e) => {
-    onDepartureStartDateChange(e.target.value)
+    onDepartureStartDateChange(e)
   }
   const handleEndDateChange = (e) => {
-    onDepartureEndDateChange(e.target.value)
+    onDepartureEndDateChange(e)
   }
+
   return (
     <SearchPanelSection>
       <InputSection>
@@ -106,23 +93,20 @@ const SearchPanel = () => {
           </StyledLabel>
         </SearchPanelTo>
       </InputSection>
-
       <StyledLabel>
         <FromTo> Start date </FromTo>
-        <StyledInput onChange={handleStartDateChange} value={departureStartDateInput} type='date' />
+        <DatePicker onChange={handleStartDateChange} value={departureStartDateInput} />
       </StyledLabel>
-
       <StyledLabel>
         <FromTo> End date </FromTo>
-        <StyledInput onChange={handleEndDateChange} value={departureEndDateInput} type='date' />
+        <DatePicker onChange={handleEndDateChange} value={departureEndDateInput} />
       </StyledLabel>
-
       <StyledLink
-        to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}&departureStartDate=${departureStartDateInput}&departureEndDate=${departureEndDateInput}`}
+        to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}&departureStartDate=${
+          departureStartDateInput && departureStartDateInput.toISOString()
+        }&departureEndDate=${departureEndDateInput && departureEndDateInput.toISOString()}`}
       >
-        <NextBtn>
-          <Arrow>&#8594;</Arrow>
-        </NextBtn>
+        <ArrowButton right />
         <StyledP>Next</StyledP>
       </StyledLink>
     </SearchPanelSection>
