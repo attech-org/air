@@ -86,6 +86,7 @@ const OrderSummary = ({
           <PlainText>Flight tickets - 1 adult</PlainText>
           <PlainText>
             {ticketPrice}
+            &nbsp;
             {currency}
           </PlainText>
         </TextRow>
@@ -93,6 +94,7 @@ const OrderSummary = ({
           <PlainText>Taxes and fees</PlainText>
           <PlainText>
             {taxesPrice}
+            &nbsp;
             {currency}
           </PlainText>
         </TextRow>
@@ -100,6 +102,7 @@ const OrderSummary = ({
           <Calculate>Subtotal</Calculate>
           <PlainText>
             {subtotalPrice}
+            &nbsp;
             {currency}
           </PlainText>
         </TextRow>
@@ -107,6 +110,7 @@ const OrderSummary = ({
           <PlainText>Service charges</PlainText>
           <PlainText>
             {servicePrice}
+            &nbsp;
             {currency}
           </PlainText>
         </TextRow>
@@ -114,6 +118,7 @@ const OrderSummary = ({
           <Calculate>Total</Calculate>
           <Sum>
             {totalPrice}
+            &nbsp;
             {currency}
           </Sum>
         </TextRow>

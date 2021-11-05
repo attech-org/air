@@ -28,11 +28,11 @@ const ImgLogo = styled.img`
 const PrevLink = styled.a`
   display: block;
   box-sizing: border-box;
-  padding: 4px 8px;
+  padding: 6px 10px;
   color: rgba(255, 255, 255, 1);
-  font-size: 2em;
-  width: 45px;
-  height: 45px;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
   background: rgba(200, 0, 3, 1);
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 8, 0.6);
   margin: -5px 55px 0 -91px;
@@ -97,7 +97,7 @@ const Input = styled.input`
   }
 `
 
-const OrderForm = ({ onChangeForm, children }) => {
+const OrderForm = ({ onChangeForm }) => {
   const { register, handleSubmit } = useForm({ mode: "onChange" })
 
   // eslint-disable-next-line prefer-const
@@ -105,7 +105,7 @@ const OrderForm = ({ onChangeForm, children }) => {
   return (
     <FormCapacity>
       <BlockEnvelop>
-        <PrevLink onClick={() => history.goBack()}>&#8592;{children}</PrevLink>
+        <PrevLink onClick={() => history.goBack()}>&#8592;</PrevLink>
         <H2>Payment method</H2>
       </BlockEnvelop>
       <ImgLogo src={visaLogo} />
@@ -114,7 +114,7 @@ const OrderForm = ({ onChangeForm, children }) => {
           <Label htmlFor='cardholderName'>Cardholder Name</Label>
           <Input type='text' placeholder='Lex Shah' id='cardholderName' {...register("cardholderName")} />
           <Label htmlFor='cardNumber'>Card Number</Label>
-          <Input type='text' maxLength='22' id='cardNumber' {...register("cardNumber")} />
+          <Input type='text' maxLength='16' id='cardNumber' {...register("cardNumber")} />
           <LabelAgree htmlFor='agreement'>
             <Checkbox type='checkbox' id='agreement' {...register("agreement")} />I accept the terms and conditions
           </LabelAgree>
@@ -124,7 +124,7 @@ const OrderForm = ({ onChangeForm, children }) => {
           <Label htmlFor='expicyCard'>Expicy</Label>
           <Input type='text' id='expicyCard' {...register("expicyCard")} />
           <Label htmlFor='cvvCard'>CVV</Label>
-          <Input type='password' id='cvvCard' {...register("cvvCard")} />
+          <Input type='password' id='cvvCard' maxLength='3' {...register("cvvCard")} />
         </ColRight>
       </FormEnvelop>
     </FormCapacity>

@@ -94,12 +94,11 @@ const BookBtn = styled(Link)`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  text-decoration: none:
+  text-decoration: none;
 `
 const BookP = styled.p`
   color: #d30000;
   font-weight: bold;
-  text-decoration: none;
 `
 
 const StopsIndicator = styled.div`
