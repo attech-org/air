@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form"
 import styled from "styled-components"
 
 import visaLogo from "../assets/img/Visa_Inc._logo.svg.png"
+import ArrowButton from "../components/ArrowButton"
 
 const FormCapacity = styled.div`
   padding: 80px 70px;
@@ -27,21 +28,8 @@ const ImgLogo = styled.img`
 const PrevLink = styled.a`
   display: block;
   box-sizing: border-box;
-  padding: 4px 8px;
-  color: rgba(255, 255, 255, 1);
-  font-size: 2em;
-  width: 45px;
-  height: 45px;
-  background: rgba(200, 0, 3, 1);
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 8, 0.6);
   margin: -5px 55px 0 -91px;
-  border-radius: 50%;
   text-decoration: none;
-  transition: 0.3s;
-  &:hover {
-    background: rgba(160, 0, 5, 1);
-    cursor: pointer;
-  }
 `
 
 const BlockEnvelop = styled.div`
@@ -102,7 +90,9 @@ const OrderForm = ({ onChangeForm }) => {
   return (
     <FormCapacity>
       <BlockEnvelop>
-        <PrevLink>&#10510;</PrevLink>
+        <PrevLink>
+          <ArrowButton />
+        </PrevLink>
         <H2>Payment method</H2>
       </BlockEnvelop>
       <ImgLogo src={visaLogo} />
