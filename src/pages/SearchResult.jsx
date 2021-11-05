@@ -9,6 +9,8 @@ import SearchResultContainer from "../containers/SearchResult"
 const StyledH2 = styled.h2`
   color: white;
   margin-bottom: 35px;
+  font-size: 5vh;
+  margin-bottom: 2vh;
 `
 
 const MainSection = styled.div`
