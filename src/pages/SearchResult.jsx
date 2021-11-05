@@ -3,14 +3,20 @@ import { useLocation } from "react-router"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
+import ArrowButton from "../components/ArrowButton"
 import Layout from "../containers/Layout"
 import SearchResultContainer from "../containers/SearchResult"
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  position: absolute;
+  margin: 53px 0px 0px -22px;
+`
 const StyledH2 = styled.h2`
   color: white;
   margin-bottom: 35px;
   font-size: 5vh;
-  margin-bottom: 2vh;
+  margin-bottom: 4vh;
 `
 
 const MainSection = styled.div`
@@ -22,25 +28,6 @@ const ContentSection = styled.div`
   margin: 34px 70px;
 `
 
-const BackBtn = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0px 3px 5px 1px #00000058;
-  background-color: #cf0000;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  margin: 53px 0px 0px -22px;
-`
-
-const Arrow = styled.p`
-  color: white;
-  margin-bottom: 5px;
-  font-size: 22px;
-`
 const Spinner = styled.p`
   color: white;
   font-size: 22px;
@@ -80,11 +67,9 @@ const SearchResultPage = () => {
       <MainSection>
         <ContentSection>
           <StyledH2>Let`s plan your trip</StyledH2>
-          <Link to='/'>
-            <BackBtn>
-              <Arrow>&#8592;</Arrow>
-            </BackBtn>
-          </Link>
+          <StyledLink to='/'>
+            <ArrowButton />
+          </StyledLink>
           {!incomingData.length && <Spinner>Loading . . .</Spinner>}
           {filteredData.length
             ? filteredData.map((el) => (

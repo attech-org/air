@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form"
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router"
 import styled from "styled-components"
 
 import visaLogo from "../assets/img/Visa_Inc._logo.svg.png"
+import ArrowButton from "../components/ArrowButton"
 
 const FormCapacity = styled.div`
   padding: 80px 70px;
@@ -28,21 +29,8 @@ const ImgLogo = styled.img`
 const PrevLink = styled.a`
   display: block;
   box-sizing: border-box;
-  padding: 6px 10px;
-  color: rgba(255, 255, 255, 1);
-  font-size: 22px;
-  width: 40px;
-  height: 40px;
-  background: rgba(200, 0, 3, 1);
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 8, 0.6);
   margin: -5px 55px 0 -91px;
-  border-radius: 50%;
   text-decoration: none;
-  transition: 0.3s;
-  &:hover {
-    background: rgba(160, 0, 5, 1);
-    cursor: pointer;
-  }
 `
 
 const BlockEnvelop = styled.div`
@@ -105,7 +93,9 @@ const OrderForm = ({ onChangeForm }) => {
   return (
     <FormCapacity>
       <BlockEnvelop>
-        <PrevLink onClick={() => history.goBack()}>&#8592;</PrevLink>
+        <PrevLink onClick={() => history.goBack()}>
+          <ArrowButton />
+        </PrevLink>
         <H2>Payment method</H2>
       </BlockEnvelop>
       <ImgLogo src={visaLogo} />
@@ -132,26 +122,3 @@ const OrderForm = ({ onChangeForm }) => {
 }
 
 export default OrderForm
-
-// const [value, setValueChange] = useState('')
-// const [expicyValue, setExpicyValueChange] = useState('')
-
-// const handleCardNumberInput = (e) => {
-//   if(/^[ \d]+$/.test(e.target.value)) {
-//     if(e.target.value.replaceAll(' ','').length % 4) {
-//       setValueChange(e.target.value)
-//     } else {
-//       setValueChange(e.target.value + '  ')
-//     }
-//   }
-// }
-
-// const handleExpicyInput = (e) => {
-//   if(/^[/\d]+$/.test(e.target.value) && e.target.value.length <= 5) {
-//     if(e.target.value.length === 2) {
-//       setExpicyValueChange(e.target.value + '/')
-//     } else {
-//       setExpicyValueChange(e.target.value)
-//     }
-//   }
-// }

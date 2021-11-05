@@ -48,7 +48,7 @@ const Layout = ({ children, bgSrc }) => {
         </StyledLinkLogo>
         <StyledLink to='/'>Search tickets</StyledLink>
         <StyledLink to='/blog'>Blog</StyledLink>
-        <StyledLink to='/tourpagesingle'>Tours</StyledLink>
+        <StyledLink to='/tours/0'>Tours</StyledLink>
       </StyledHeader>
       <StyledMain>{children}</StyledMain>
       <footer>footer</footer>

@@ -34,7 +34,7 @@ const App = () => {
         <Route path='/blog'>
           <PostsPage />
         </Route>
-        <Route path='/tourpagesingle/' render={({ match }) => <TourPageSingle tourId={match.params.id} />} />
+        <Route path='/tours/:id' render={({ match }) => <TourPageSingle tourId={match.params.id} />} />
 
         <Route path='*'>
           <div>THIS PAGE NOT EXIST</div>

@@ -194,7 +194,7 @@ const SearchResultContainer = (props) => {
         </DateBox>
         <TimeP>
           {Math.ceil(props.price)}
-          {props.priceCurrency || "USD"}
+          {props.priceCurrency || " USD"}
         </TimeP>
         <BookBtn to={`/orderPayment?price=${props.price}&priceCurrency=${props.priceCurrency}`}>
           <BookP>Book Now</BookP>
