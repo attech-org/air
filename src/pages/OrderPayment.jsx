@@ -1,3 +1,4 @@
+import { useLocation } from "react-router"
 import styled from "styled-components"
 
 import Layout from "../containers/Layout"
@@ -9,10 +10,14 @@ const Main = styled.div`
 `
 
 const OrderPaymentPage = () => {
+  const query = new URLSearchParams(useLocation().search || "")
+  const price = query.get("price")
+  const priceCurrency = query.get("priceCurrency")
+
   return (
     <Layout>
       <Main>
-        <OrderPaymentContainer />
+        <OrderPaymentContainer price={price} priceCurrency={priceCurrency} />
       </Main>
     </Layout>
   )

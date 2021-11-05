@@ -18,14 +18,14 @@ const Title = styled.h1`
   padding-left: 10px;
 `
 
-const OrderPaymentContainer = () => {
+const OrderPaymentContainer = (props) => {
   const [orderData, setOrderData] = useState({
-    ticketPrice: 150,
-    currency: "USD",
-    taxesPrice: 15,
-    subtotalPrice: 145,
+    ticketPrice: Math.ceil(props.price),
+    currency: props.priceCurrency == "null" ? "USD" : props.priceCurrency,
+    taxesPrice: Math.ceil(props.price * 0.2),
+    subtotalPrice: Math.ceil(props.price) + Math.ceil(props.price * 0.2),
     servicePrice: 20,
-    totalPrice: 190,
+    totalPrice: Math.ceil(props.price) + Math.ceil(props.price * 0.2) + 20,
   })
 
   const handleOrderForm = (data) => {
@@ -34,11 +34,8 @@ const OrderPaymentContainer = () => {
       ...data,
     })
   }
-
-  const handleCheckOut = () => {
-    // eslint-disable-next-line no-console
-    console.log(orderData)
-  }
+  // eslint-disable-next-line no-console
+  const handleCheckOut = () => console.log(orderData) //Temporarily. Outputs data from the form to the console
 
   return (
     <>

@@ -87,6 +87,8 @@ const Input = styled.input`
 const OrderForm = ({ onChangeForm }) => {
   const { register, handleSubmit } = useForm({ mode: "onChange" })
 
+  // eslint-disable-next-line prefer-const
+
   return (
     <FormCapacity>
       <BlockEnvelop>
@@ -101,7 +103,7 @@ const OrderForm = ({ onChangeForm }) => {
           <Label htmlFor='cardholderName'>Cardholder Name</Label>
           <Input type='text' placeholder='Lex Shah' id='cardholderName' {...register("cardholderName")} />
           <Label htmlFor='cardNumber'>Card Number</Label>
-          <Input type='text' maxLength='22' id='cardNumber' {...register("cardNumber")} />
+          <Input type='text' maxLength='16' id='cardNumber' {...register("cardNumber")} />
           <LabelAgree htmlFor='agreement'>
             <Checkbox type='checkbox' id='agreement' {...register("agreement")} />I accept the terms and conditions
           </LabelAgree>
@@ -111,7 +113,7 @@ const OrderForm = ({ onChangeForm }) => {
           <Label htmlFor='expicyCard'>Expicy</Label>
           <Input type='text' id='expicyCard' {...register("expicyCard")} />
           <Label htmlFor='cvvCard'>CVV</Label>
-          <Input type='password' id='cvvCard' {...register("cvvCard")} />
+          <Input type='password' id='cvvCard' maxLength='3' {...register("cvvCard")} />
         </ColRight>
       </FormEnvelop>
     </FormCapacity>
@@ -119,26 +121,3 @@ const OrderForm = ({ onChangeForm }) => {
 }
 
 export default OrderForm
-
-// const [value, setValueChange] = useState('')
-// const [expicyValue, setExpicyValueChange] = useState('')
-
-// const handleCardNumberInput = (e) => {
-//   if(/^[ \d]+$/.test(e.target.value)) {
-//     if(e.target.value.replaceAll(' ','').length % 4) {
-//       setValueChange(e.target.value)
-//     } else {
-//       setValueChange(e.target.value + '  ')
-//     }
-//   }
-// }
-
-// const handleExpicyInput = (e) => {
-//   if(/^[/\d]+$/.test(e.target.value) && e.target.value.length <= 5) {
-//     if(e.target.value.length === 2) {
-//       setExpicyValueChange(e.target.value + '/')
-//     } else {
-//       setExpicyValueChange(e.target.value)
-//     }
-//   }
-// }
