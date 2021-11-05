@@ -68,7 +68,7 @@ const TourPageSingleContainer = ({ id, backgroundSrc, title, location, country, 
           <CountryP>{country}</CountryP>
           <BottomSection>
             <BtnBox>
-              <StyledLink to={`/tourpagesingle/${id + 1}`}>
+              <StyledLink to={`${id + 1}`}>
                 <BackBtn>
                   <Arrow>&#8592;</Arrow>
                 </BackBtn>
