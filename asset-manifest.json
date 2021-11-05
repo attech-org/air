@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/air/static/css/main.726efa02.chunk.css",
-    "main.js": "/air/static/js/main.58509933.chunk.js",
-    "main.js.map": "/air/static/js/main.58509933.chunk.js.map",
-    "runtime-main.js": "/air/static/js/runtime-main.1ed2e97a.js",
-    "runtime-main.js.map": "/air/static/js/runtime-main.1ed2e97a.js.map",
-    "static/css/2.ba1b51e3.chunk.css": "/air/static/css/2.ba1b51e3.chunk.css",
-    "static/js/2.2ba5753e.chunk.js": "/air/static/js/2.2ba5753e.chunk.js",
-    "static/js/2.2ba5753e.chunk.js.map": "/air/static/js/2.2ba5753e.chunk.js.map",
-    "index.html": "/air/index.html",
-    "static/css/2.ba1b51e3.chunk.css.map": "/air/static/css/2.ba1b51e3.chunk.css.map",
-    "static/css/main.726efa02.chunk.css.map": "/air/static/css/main.726efa02.chunk.css.map",
-    "static/js/2.2ba5753e.chunk.js.LICENSE.txt": "/air/static/js/2.2ba5753e.chunk.js.LICENSE.txt",
-    "static/media/Visa_Inc._logo.svg.d4fe1711.png": "/air/static/media/Visa_Inc._logo.svg.d4fe1711.png",
-    "static/media/logo.6068b200.jpg": "/air/static/media/logo.6068b200.jpg"
+    "main.css": "https://attech-org.github.io/air/static/css/main.726efa02.chunk.css",
+    "main.js": "https://attech-org.github.io/air/static/js/main.58509933.chunk.js",
+    "main.js.map": "https://attech-org.github.io/air/static/js/main.58509933.chunk.js.map",
+    "runtime-main.js": "https://attech-org.github.io/air/static/js/runtime-main.6d9fad7a.js",
+    "runtime-main.js.map": "https://attech-org.github.io/air/static/js/runtime-main.6d9fad7a.js.map",
+    "static/css/2.ba1b51e3.chunk.css": "https://attech-org.github.io/air/static/css/2.ba1b51e3.chunk.css",
+    "static/js/2.c2e0160a.chunk.js": "https://attech-org.github.io/air/static/js/2.c2e0160a.chunk.js",
+    "static/js/2.c2e0160a.chunk.js.map": "https://attech-org.github.io/air/static/js/2.c2e0160a.chunk.js.map",
+    "index.html": "https://attech-org.github.io/air/index.html",
+    "static/css/2.ba1b51e3.chunk.css.map": "https://attech-org.github.io/air/static/css/2.ba1b51e3.chunk.css.map",
+    "static/css/main.726efa02.chunk.css.map": "https://attech-org.github.io/air/static/css/main.726efa02.chunk.css.map",
+    "static/js/2.c2e0160a.chunk.js.LICENSE.txt": "https://attech-org.github.io/air/static/js/2.c2e0160a.chunk.js.LICENSE.txt",
+    "static/media/Visa_Inc._logo.svg.d4fe1711.png": "https://attech-org.github.io/air/static/media/Visa_Inc._logo.svg.d4fe1711.png",
+    "static/media/logo.6068b200.jpg": "https://attech-org.github.io/air/static/media/logo.6068b200.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.1ed2e97a.js",
+    "static/js/runtime-main.6d9fad7a.js",
     "static/css/2.ba1b51e3.chunk.css",
-    "static/js/2.2ba5753e.chunk.js",
+    "static/js/2.c2e0160a.chunk.js",
     "static/css/main.726efa02.chunk.css",
     "static/js/main.58509933.chunk.js"
   ]
