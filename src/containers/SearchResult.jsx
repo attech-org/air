@@ -9,11 +9,9 @@ const StyledP = styled.p`
 const StyledCityP = styled.p`
   font-weight: bold;
 `
-const MainSection = styled.div`
-  height: 153px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  margin-top: -5px;
+const ResultSection = styled.div`
+  padding: 1em;
+  border-radius: 4px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -46,19 +44,27 @@ const Dot = styled.div`
   border-radius: 50%;
   background-color: #999999;
 `
+
 const ChooseFlightSection = styled.div`
+  margin-top: -3px;
   height: 153px;
   padding: 0 80px 0 80px;
   background-color: #ececec;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &:last-of-type {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom: none;
+  }
+  border-bottom: 4px solid white;
 `
 const CompanyInfo = styled.div`
   display: flex;
   align-items: center;
+  width: 15%;
 `
 const CompanyLogoImg = styled.img`
   width: 20px;
@@ -95,6 +101,10 @@ const BookBtn = styled(Link)`
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
+  &:hover {
+    background-color: #a5a5a536;
+    transition: 0.3s;
+  }
 `
 const BookP = styled.p`
   color: #d30000;
@@ -129,6 +139,12 @@ const StopsP = styled.p`
   background-color: black;
 `
 
+const Price = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 10%;
+`
+
 const SearchResultContainer = (props) => {
   const departureTime = new Date(props.departureDate)
 
@@ -148,7 +164,7 @@ const SearchResultContainer = (props) => {
 
   return (
     <>
-      <MainSection>
+      <ResultSection>
         <StyledBoxDepartureArrive>
           <StyledP>Departure</StyledP>
           <StyledCityP>{props.departureCity}</StyledCityP>
@@ -166,7 +182,7 @@ const SearchResultContainer = (props) => {
           <StyledP>Arrival</StyledP>
           <StyledCityP>{props.arriveCity}</StyledCityP>
         </StyledBoxDepartureArrive>
-      </MainSection>
+      </ResultSection>
       <ChooseFlightSection>
         <CompanyInfo>
           <CompanyLogoImg src={props.flightCompanyLogo || "https://via.placeholder.com/150"} alt='Logo' />
@@ -192,10 +208,12 @@ const SearchResultContainer = (props) => {
           <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
           <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
         </DateBox>
-        <TimeP>
-          {Math.ceil(props.price)}
-          {props.priceCurrency || " USD"}
-        </TimeP>
+        <Price>
+          <TimeP>
+            {Math.ceil(props.price) + " "}
+            {props.priceCurrency || " USD"}
+          </TimeP>
+        </Price>
         <BookBtn to={`/orderPayment?price=${props.price}&priceCurrency=${props.priceCurrency}`}>
           <BookP>Book Now</BookP>
         </BookBtn>

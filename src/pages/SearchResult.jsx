@@ -10,7 +10,7 @@ import SearchResultContainer from "../containers/SearchResult"
 const StyledLink = styled(Link)`
   text-decoration: none;
   position: absolute;
-  margin: 53px 0px 0px -22px;
+  margin: 28px 0px 0px -22px;
 `
 const StyledH2 = styled.h2`
   color: white;
@@ -62,6 +62,7 @@ const SearchResultPage = () => {
       (!departureStartDateInput || new Date(departureDate) >= new Date(departureStartDateInput)) &&
       (!departureEndDateInput || new Date(departureDate) <= new Date(departureEndDateInput))
   )
+
   return (
     <Layout>
       <MainSection>
@@ -70,6 +71,7 @@ const SearchResultPage = () => {
           <StyledLink to='/'>
             <ArrowButton />
           </StyledLink>
+
           {!incomingData.length && <Spinner>Loading . . .</Spinner>}
           {filteredData.length
             ? filteredData.map((el) => (
