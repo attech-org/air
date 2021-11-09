@@ -28,12 +28,12 @@ const ContentSection = styled.div`
   margin: 34px 70px;
 `
 
-const Spinner = styled.p`
-  color: white;
-  font-size: 22px;
-  text-align: center;
-  margin-top: 93px;
-`
+// const Spinner = styled.p`
+//   color: white;
+//   font-size: 22px;
+//   text-align: center;
+//   margin-top: 93px;
+// `
 
 const SOURCE_URL =
   "https://gist.githubusercontent.com/alexandrtovmach/80574d5e0979a3e8f405304839d057e3/raw/948b41de676e7e14b68968987f8f264cce52c922/air_routes.json"
@@ -71,23 +71,8 @@ const SearchResultPage = () => {
           <StyledLink to='/'>
             <ArrowButton />
           </StyledLink>
-
-          {!incomingData.length && <Spinner>Loading . . .</Spinner>}
-          {filteredData.length
-            ? filteredData.map((el) => (
-                <SearchResultContainer
-                  key={el.id}
-                  departureCity={el.departureCity}
-                  arriveCity={el.arriveCity}
-                  flightCompany={el.flightCompany}
-                  flightCompanyLogo={el.flightCompanyLogo}
-                  departureDate={el.departureDate}
-                  flightDurationMinutes={el.flightDurationMinutes}
-                  price={el.price}
-                  priceCurrency={el.priceCurrency}
-                />
-              ))
-            : incomingData.length && <Spinner>No tickets available</Spinner>}
+          <SearchResultContainer filteredData={filteredData} />
+          ))
         </ContentSection>
       </MainSection>
     </Layout>

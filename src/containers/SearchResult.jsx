@@ -145,11 +145,11 @@ const Price = styled.div`
   width: 10%;
 `
 
-const SearchResultContainer = (props) => {
-  const departureTime = new Date(props.departureDate)
+const SearchResultContainer = ({ filteredData }) => {
+  const departureTime = new Date(filteredData.departureDate)
 
   const flightDuration = () => {
-    const mins = props.flightDurationMinutes
+    const mins = filteredData.flightDurationMinutes
     const hours = Math.trunc(mins / 60)
     const minutes = mins % 60
     return `${hours} hour(s) ${minutes} minutes`
@@ -157,67 +157,88 @@ const SearchResultContainer = (props) => {
 
   const arrivalTime = () => {
     const time1 = new Date(departureTime)
-    const time2 = new Date(+time1 + props.flightDurationMinutes * 6e4)
+    const time2 = new Date(+time1 + filteredData.flightDurationMinutes * 6e4)
 
     return time2
   }
+  const groupedData = {}
 
+  filteredData.forEach((el) => {
+    const keyName = `${el.departureCity}-${el.arriveCity}`
+    groupedData[keyName] = [...(groupedData[keyName] || []), el]
+  })
+  console.log(groupedData)
   return (
     <>
-      <ResultSection>
-        <StyledBoxDepartureArrive>
-          <StyledP>Departure</StyledP>
-          <StyledCityP>{props.departureCity}</StyledCityP>
-        </StyledBoxDepartureArrive>
-        <StyledIconBox>
-          <Dot />
-          <Dot />
-          <Dot />
-          <StyledImg src={icon} alt='PlaneImg' />
-          <Dot />
-          <Dot />
-          <Dot />
-        </StyledIconBox>
-        <StyledBoxDepartureArrive>
-          <StyledP>Arrival</StyledP>
-          <StyledCityP>{props.arriveCity}</StyledCityP>
-        </StyledBoxDepartureArrive>
-      </ResultSection>
-      <ChooseFlightSection>
-        <CompanyInfo>
-          <CompanyLogoImg src={props.flightCompanyLogo || "https://via.placeholder.com/150"} alt='Logo' />
-          <StyledP>{props.flightCompany}</StyledP>
-        </CompanyInfo>
-        <DateBox>
-          <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
-          <FlightDurationP>{departureTime.toDateString()}</FlightDurationP>
-        </DateBox>
-        <StopsIndicator>
-          <StopsDiv>
-            <Dot />
-            <Dot />
-            <Dot />
-            <StopsP>0 Stops</StopsP>
-            <Dot />
-            <Dot />
-            <Dot />
-          </StopsDiv>
-          <FlightDurationP>{flightDuration()}</FlightDurationP>
-        </StopsIndicator>
-        <DateBox>
-          <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
-          <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
-        </DateBox>
-        <Price>
-          <TimeP>
-            {Math.ceil(props.price) + " "}
-            {props.priceCurrency || " USD"}
-          </TimeP>
-        </Price>
-        <BookBtn to={`/orderPayment?price=${props.price}&priceCurrency=${props.priceCurrency}`}>
-          <BookP>Book Now</BookP>
-        </BookBtn>
-      </ChooseFlightSection>
+      {Object.entries(groupedData)
+        .map(([key, val]) => {
+          const [departureCity, arriveCity] = key.split("-")
+          return (
+            <>
+              <ResultSection key={key}>
+                <StyledBoxDepartureArrive>
+                  <StyledP>Departure</StyledP>
+                  <StyledCityP>{departureCity}</StyledCityP>
+                </StyledBoxDepartureArrive>
+                <StyledIconBox>
+                  <Dot />
+                  <Dot />
+                  <Dot />
+                  <StyledImg src={icon} alt='PlaneImg' />
+                  <Dot />
+                  <Dot />
+                  <Dot />
+                </StyledIconBox>
+                <StyledBoxDepartureArrive>
+                  <StyledP>Arrival</StyledP>
+                  <StyledCityP>{arriveCity}</StyledCityP>
+                </StyledBoxDepartureArrive>
+              </ResultSection>
+              <div>
+                {val.map((el) => {
+                  return (
+                    <ChooseFlightSection key={el.id}>
+                      <CompanyInfo>
+                        <CompanyLogoImg src={el.flightCompanyLogo || "https://via.placeholder.com/150"} alt='Logo' />
+                        <StyledP>{el.flightCompany}</StyledP>
+                      </CompanyInfo>
+                      <DateBox>
+                        <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
+                        <FlightDurationP>{departureTime.toDateString()}</FlightDurationP>
+                      </DateBox>
+                      <StopsIndicator>
+                        <StopsDiv>
+                          <Dot />
+                          <Dot />
+                          <Dot />
+                          <StopsP>0 Stops</StopsP>
+                          <Dot />
+                          <Dot />
+                          <Dot />
+                        </StopsDiv>
+                        <FlightDurationP>{flightDuration()}</FlightDurationP>
+                      </StopsIndicator>
+                      <DateBox>
+                        <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
+                        <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
+                      </DateBox>
+                      <Price>
+                        <TimeP>
+                          {Math.ceil(filteredData.price) + " "}
+                          {filteredData.priceCurrency || " USD"}
+                        </TimeP>
+                      </Price>
+                      <BookBtn to={`/orderPayment?price=${el.price}&priceCurrency=${el.priceCurrency}`}>
+                        <BookP>Book Now</BookP>
+                      </BookBtn>
+                    </ChooseFlightSection>
+                  )
+                })}
+              </div>
+            </>
+          )
+        })
+        .slice(0, 5)}
     </>
   )
 }
