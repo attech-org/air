@@ -40,10 +40,6 @@ const SearchPanelFrom = styled.div`
 const StyledInput = styled.input`
   border: none;
   padding: 10px 0px 10px 10px;
-  &::-webkit-input-placeholder {
-    font-size: 15px;
-    color: black;
-  }
 `
 
 const FromTo = styled.p`
@@ -90,20 +86,36 @@ const SearchPanel = () => {
 
   const [departureStartDateInput, onDepartureStartDateChange] = useState("")
   const [departureEndDateInput, onDepartureEndDateChange] = useState("")
+  const [autocompleteDCities, onAutocompleteDCitiesChange] = useState([])
+  const [autocompleteACities, onAutocompleteACitiesChange] = useState([])
 
-  const handleFromChange = (e) => onDepartureInputChange(e.target.value)
-  const handleToChange = (e) => onArrivalInputChange(e.target.value)
+  const handleFromChange = (e) => {
+    onDepartureInputChange(e.target.value)
+    onAutocompleteDCitiesChange(
+      cityNamesArr.filter((city) => city.toLowerCase().includes(e.target.value.toLowerCase()))
+    )
+  }
+  const handleToChange = (e) => {
+    onArrivalInputChange(e.target.value)
+    onAutocompleteACitiesChange(
+      cityNamesArr.filter((city) => city.toLowerCase().includes(e.target.value.toLowerCase()))
+    )
+  }
   const handleStartDateChange = (e) => {
     onDepartureStartDateChange(e)
   }
   const handleEndDateChange = (e) => {
     onDepartureEndDateChange(e)
   }
-  const [isOpen, setIsOpen] = useState(false)
 
-  const itemClickHandler = (e) => {
-    onDepartureInputChange(e.target.textContent)
-    setIsOpen(false)
+  const itemClickHandler = (type, city) => {
+    if (type === "depart") {
+      onAutocompleteDCitiesChange([])
+      onDepartureInputChange(city)
+    } else if (type === "arrive") {
+      onAutocompleteACitiesChange([])
+      onArrivalInputChange(city)
+    }
   }
 
   const cityNamesArr = [
@@ -119,7 +131,6 @@ const SearchPanel = () => {
     "Odesa",
     "Minsk",
   ]
-  const cityAutocomplete = cityNamesArr.filter((city) => city.toLowerCase().includes(departureCityInput.toLowerCase()))
   return (
     <SearchPanelSection>
       <InputSection>
@@ -133,24 +144,33 @@ const SearchPanel = () => {
                 type='text'
                 placeholder='Kryvyi Rih'
               />
-              <Autocomplete>
-                {departureCityInput && isOpen
-                  ? cityAutocomplete.map((country, index) => {
-                      return (
-                        <AutocompleteItem onClick={itemClickHandler} key={index}>
-                          {country}
-                        </AutocompleteItem>
-                      )
-                    })
-                  : null}
-              </Autocomplete>
+              {departureCityInput && Boolean(autocompleteDCities.length) && (
+                <Autocomplete>
+                  {autocompleteDCities.map((city, index) => (
+                    <AutocompleteItem onClick={() => itemClickHandler("depart", city)} key={index}>
+                      {city}
+                    </AutocompleteItem>
+                  ))}
+                </Autocomplete>
+              )}
             </StyledForm>
           </StyledLabel>
         </SearchPanelFrom>
         <SearchPanelTo>
           <StyledLabel>
             <FromTo> To </FromTo>
-            <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' placeholder='San Francisco' />
+            <StyledForm>
+              <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' placeholder='San Francisco' />
+              {arrivalCityInput && Boolean(autocompleteACities.length) && (
+                <Autocomplete>
+                  {autocompleteACities.map((city, index) => (
+                    <AutocompleteItem onClick={() => itemClickHandler("arrive", city)} key={index}>
+                      {city}
+                    </AutocompleteItem>
+                  ))}
+                </Autocomplete>
+              )}
+            </StyledForm>
           </StyledLabel>
         </SearchPanelTo>
       </InputSection>
