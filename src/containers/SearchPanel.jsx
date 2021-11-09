@@ -60,10 +60,33 @@ const StyledLink = styled(Link)`
   width: 100px;
   height: 100px;
 `
-
+const StyledForm = styled.form`
+  width: 350px;
+  height: 40px;
+  position: relative;
+`
+const Autocomplete = styled.ul`
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  background: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+  max-height: 240px;
+  height: auto;
+  overflow: auto;
+`
+const AutocompleteItem = styled.li`
+  padding: 10px;
+  &:hover {
+    background: #e0e0e0;
+    cursor: pointer;
+    transition: 1s;
+  }
+`
 const SearchPanel = () => {
-  const [departureCityInput, onDepartureInputChange] = useState("London")
-  const [arrivalCityInput, onArrivalInputChange] = useState("Kyiv")
+  const [departureCityInput, onDepartureInputChange] = useState("")
+  const [arrivalCityInput, onArrivalInputChange] = useState("")
 
   const [departureStartDateInput, onDepartureStartDateChange] = useState("")
   const [departureEndDateInput, onDepartureEndDateChange] = useState("")
@@ -76,14 +99,52 @@ const SearchPanel = () => {
   const handleEndDateChange = (e) => {
     onDepartureEndDateChange(e)
   }
+  const [isOpen, setIsOpen] = useState(false)
 
+  const itemClickHandler = (e) => {
+    onDepartureInputChange(e.target.textContent)
+    setIsOpen(false)
+  }
+
+  const cityNamesArr = [
+    "London",
+    "Tokio",
+    "Moscow",
+    "Kyiv",
+    "Prague",
+    "Venice",
+    "Athens",
+    "Barcelona",
+    "Lviv",
+    "Odesa",
+    "Minsk",
+  ]
+  const cityAutocomplete = cityNamesArr.filter((city) => city.toLowerCase().includes(departureCityInput.toLowerCase()))
   return (
     <SearchPanelSection>
       <InputSection>
         <SearchPanelFrom>
           <StyledLabel>
             <FromTo>From</FromTo>
-            <StyledInput onChange={handleFromChange} value={departureCityInput} type='text' placeholder='Kryvyi Rih' />
+            <StyledForm>
+              <StyledInput
+                onChange={handleFromChange}
+                value={departureCityInput}
+                type='text'
+                placeholder='Kryvyi Rih'
+              />
+              <Autocomplete>
+                {departureCityInput && isOpen
+                  ? cityAutocomplete.map((country, index) => {
+                      return (
+                        <AutocompleteItem onClick={itemClickHandler} key={index}>
+                          {country}
+                        </AutocompleteItem>
+                      )
+                    })
+                  : null}
+              </Autocomplete>
+            </StyledForm>
           </StyledLabel>
         </SearchPanelFrom>
         <SearchPanelTo>
