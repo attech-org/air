@@ -28,13 +28,6 @@ const ContentSection = styled.div`
   margin: 34px 70px;
 `
 
-// const Spinner = styled.p`
-//   color: white;
-//   font-size: 22px;
-//   text-align: center;
-//   margin-top: 93px;
-// `
-
 const SOURCE_URL =
   "https://gist.githubusercontent.com/alexandrtovmach/80574d5e0979a3e8f405304839d057e3/raw/948b41de676e7e14b68968987f8f264cce52c922/air_routes.json"
 const SearchResultPage = () => {
@@ -71,7 +64,7 @@ const SearchResultPage = () => {
           <StyledLink to='/'>
             <ArrowButton />
           </StyledLink>
-          <SearchResultContainer filteredData={filteredData} />
+          <SearchResultContainer incomingData={incomingData} filteredData={filteredData} />
           ))
         </ContentSection>
       </MainSection>
