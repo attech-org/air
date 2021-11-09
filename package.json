@@ -26,7 +26,7 @@
     "postinstall": "is-ci || husky install",
     "lint": "eslint . --ext .js,.jsx",
     "prettify": "prettier --write ./ && npm run lint -- --fix",
-    "predeploy": "npm run build",
+    "predeploy": "PUBLIC_URL=https://attech-org.github.io/air npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
