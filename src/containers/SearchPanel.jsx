@@ -20,11 +20,17 @@ const StyledLabel = styled.label`
 `
 
 const SearchPanelSection = styled.div`
-  height: 60px;
-  width: 100%;
+  background-color: white;
+  padding: 30px 60px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 720px) {
+    padding: 30px;
+  }
 `
 
 const SearchPanelFrom = styled.div`
