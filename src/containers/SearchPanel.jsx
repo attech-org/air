@@ -49,11 +49,6 @@ const StyledInput = styled.input`
   margin-top: 5px;
 `
 
-const FromTo = styled.p``
-const FromToDate = styled(FromTo)`
-  margin-bottom: 3px;
-`
-
 const StyledLink = styled(Link)`
   text-decoration: none;
   display: flex;
@@ -167,11 +162,11 @@ const SearchPanel = () => {
       </StyledLabel>
 
       <StyledLabel>
-        <FromToDate> Start date </FromToDate>
+        Start date
         <Date onChange={handleStartDateChange} value={departureStartDateInput} />
       </StyledLabel>
       <StyledLabel>
-        <FromToDate> End date </FromToDate>
+        End date
         <Date onChange={handleEndDateChange} value={departureEndDateInput} />
       </StyledLabel>
       <StyledLink
