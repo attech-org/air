@@ -40,10 +40,6 @@ const SearchPanelFrom = styled.div`
 const StyledInput = styled.input`
   border: none;
   padding: 10px 0px 10px 10px;
-  &::-webkit-input-placeholder {
-    font-size: 15px;
-    color: black;
-  }
 `
 
 const FromTo = styled.p`
@@ -60,16 +56,51 @@ const StyledLink = styled(Link)`
   width: 100px;
   height: 100px;
 `
-
+const StyledForm = styled.form`
+  width: 350px;
+  height: 40px;
+  position: relative;
+`
+const Autocomplete = styled.ul`
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  background: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+  max-height: 240px;
+  height: auto;
+  overflow: auto;
+`
+const AutocompleteItem = styled.li`
+  padding: 10px;
+  &:hover {
+    background: #e0e0e0;
+    cursor: pointer;
+    transition: 1s;
+  }
+`
 const SearchPanel = () => {
-  const [departureCityInput, onDepartureInputChange] = useState("London")
-  const [arrivalCityInput, onArrivalInputChange] = useState("Kyiv")
+  const [departureCityInput, onDepartureInputChange] = useState("")
+  const [arrivalCityInput, onArrivalInputChange] = useState("")
 
   const [departureStartDateInput, onDepartureStartDateChange] = useState("")
   const [departureEndDateInput, onDepartureEndDateChange] = useState("")
+  const [autocompleteDCities, onAutocompleteDCitiesChange] = useState([])
+  const [autocompleteACities, onAutocompleteACitiesChange] = useState([])
 
-  const handleFromChange = (e) => onDepartureInputChange(e.target.value)
-  const handleToChange = (e) => onArrivalInputChange(e.target.value)
+  const handleFromChange = (e) => {
+    onDepartureInputChange(e.target.value)
+    onAutocompleteDCitiesChange(
+      cityNamesArr.filter((city) => city.toLowerCase().includes(e.target.value.toLowerCase()))
+    )
+  }
+  const handleToChange = (e) => {
+    onArrivalInputChange(e.target.value)
+    onAutocompleteACitiesChange(
+      cityNamesArr.filter((city) => city.toLowerCase().includes(e.target.value.toLowerCase()))
+    )
+  }
   const handleStartDateChange = (e) => {
     onDepartureStartDateChange(e)
   }
@@ -77,19 +108,69 @@ const SearchPanel = () => {
     onDepartureEndDateChange(e)
   }
 
+  const itemClickHandler = (type, city) => {
+    if (type === "depart") {
+      onAutocompleteDCitiesChange([])
+      onDepartureInputChange(city)
+    } else if (type === "arrive") {
+      onAutocompleteACitiesChange([])
+      onArrivalInputChange(city)
+    }
+  }
+
+  const cityNamesArr = [
+    "London",
+    "Tokio",
+    "Moscow",
+    "Kyiv",
+    "Prague",
+    "Venice",
+    "Athens",
+    "Barcelona",
+    "Lviv",
+    "Odesa",
+    "Minsk",
+  ]
   return (
     <SearchPanelSection>
       <InputSection>
         <SearchPanelFrom>
           <StyledLabel>
             <FromTo>From</FromTo>
-            <StyledInput onChange={handleFromChange} value={departureCityInput} type='text' placeholder='Kryvyi Rih' />
+            <StyledForm>
+              <StyledInput
+                onChange={handleFromChange}
+                value={departureCityInput}
+                type='text'
+                placeholder='Kryvyi Rih'
+              />
+              {departureCityInput && Boolean(autocompleteDCities.length) && (
+                <Autocomplete>
+                  {autocompleteDCities.map((city, index) => (
+                    <AutocompleteItem onClick={() => itemClickHandler("depart", city)} key={index}>
+                      {city}
+                    </AutocompleteItem>
+                  ))}
+                </Autocomplete>
+              )}
+            </StyledForm>
           </StyledLabel>
         </SearchPanelFrom>
         <SearchPanelTo>
           <StyledLabel>
             <FromTo> To </FromTo>
-            <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' placeholder='San Francisco' />
+            <StyledForm>
+              <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' placeholder='San Francisco' />
+              {arrivalCityInput && Boolean(autocompleteACities.length) && (
+                <Autocomplete>
+                  {autocompleteACities.map((city, index) => (
+                    <AutocompleteItem onClick={() => itemClickHandler("arrive", city)} key={index}>
+                      {city}
+                    </AutocompleteItem>
+                  ))}
+                </Autocomplete>
+              )}
+            </StyledForm>
           </StyledLabel>
         </SearchPanelTo>
       </InputSection>
