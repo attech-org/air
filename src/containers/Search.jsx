@@ -5,7 +5,8 @@ import SearchPanel from "./SearchPanel"
 const SearchContainerSection = styled.div`
   background-color: white;
   height: 110px;
-  padding: 0 80px 0 80px;
+  width: 800px;
+  padding: 0 60px 0 60px;
   border-radius: 5px;
   display: flex;
   align-items: center;

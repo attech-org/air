@@ -18,9 +18,6 @@ const StyledLabel = styled.label`
   color: gray;
   line-height: 2em;
 `
-const InputSection = styled.div`
-  display: flex;
-`
 
 const SearchPanelSection = styled.div`
   height: 60px;
@@ -34,12 +31,16 @@ const SearchPanelFrom = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-right: 60px;
+  margin-right: 90px;
+  width: 60px;
 `
 
 const StyledInput = styled.input`
   border: none;
+  border-bottom: 1px solid gray;
   padding: 10px 0px 10px 10px;
+  font-size: 16px;
+  width: 100%;
 `
 
 const FromTo = styled.p`
@@ -57,7 +58,7 @@ const StyledLink = styled(Link)`
   height: 100px;
 `
 const StyledForm = styled.form`
-  width: 350px;
+  width: 100px;
   height: 40px;
   position: relative;
 `
@@ -79,6 +80,10 @@ const AutocompleteItem = styled.li`
     cursor: pointer;
     transition: 1s;
   }
+`
+const Date = styled(DatePicker)`
+  border: 1px solid gray;
+  border-radius: 4px;
 `
 const SearchPanel = () => {
   const [departureCityInput, onDepartureInputChange] = useState("")
@@ -133,54 +138,48 @@ const SearchPanel = () => {
   ]
   return (
     <SearchPanelSection>
-      <InputSection>
-        <SearchPanelFrom>
-          <StyledLabel>
-            <FromTo>From</FromTo>
-            <StyledForm>
-              <StyledInput
-                onChange={handleFromChange}
-                value={departureCityInput}
-                type='text'
-                placeholder='Kryvyi Rih'
-              />
-              {departureCityInput && Boolean(autocompleteDCities.length) && (
-                <Autocomplete>
-                  {autocompleteDCities.map((city, index) => (
-                    <AutocompleteItem onClick={() => itemClickHandler("depart", city)} key={index}>
-                      {city}
-                    </AutocompleteItem>
-                  ))}
-                </Autocomplete>
-              )}
-            </StyledForm>
-          </StyledLabel>
-        </SearchPanelFrom>
-        <SearchPanelTo>
-          <StyledLabel>
-            <FromTo> To </FromTo>
-            <StyledForm>
-              <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' placeholder='San Francisco' />
-              {arrivalCityInput && Boolean(autocompleteACities.length) && (
-                <Autocomplete>
-                  {autocompleteACities.map((city, index) => (
-                    <AutocompleteItem onClick={() => itemClickHandler("arrive", city)} key={index}>
-                      {city}
-                    </AutocompleteItem>
-                  ))}
-                </Autocomplete>
-              )}
-            </StyledForm>
-          </StyledLabel>
-        </SearchPanelTo>
-      </InputSection>
+      <SearchPanelFrom>
+        <StyledLabel>
+          <FromTo>From</FromTo>
+          <StyledForm>
+            <StyledInput onChange={handleFromChange} value={departureCityInput} type='text' />
+            {departureCityInput && Boolean(autocompleteDCities.length) && (
+              <Autocomplete>
+                {autocompleteDCities.map((city, index) => (
+                  <AutocompleteItem onClick={() => itemClickHandler("depart", city)} key={index}>
+                    {city}
+                  </AutocompleteItem>
+                ))}
+              </Autocomplete>
+            )}
+          </StyledForm>
+        </StyledLabel>
+      </SearchPanelFrom>
+      <SearchPanelTo>
+        <StyledLabel>
+          <FromTo> To </FromTo>
+          <StyledForm>
+            <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' />
+            {arrivalCityInput && Boolean(autocompleteACities.length) && (
+              <Autocomplete>
+                {autocompleteACities.map((city, index) => (
+                  <AutocompleteItem onClick={() => itemClickHandler("arrive", city)} key={index}>
+                    {city}
+                  </AutocompleteItem>
+                ))}
+              </Autocomplete>
+            )}
+          </StyledForm>
+        </StyledLabel>
+      </SearchPanelTo>
+
       <StyledLabel>
         <FromTo> Start date </FromTo>
-        <DatePicker onChange={handleStartDateChange} value={departureStartDateInput} />
+        <Date onChange={handleStartDateChange} value={departureStartDateInput} />
       </StyledLabel>
       <StyledLabel>
         <FromTo> End date </FromTo>
-        <DatePicker onChange={handleEndDateChange} value={departureEndDateInput} />
+        <Date onChange={handleEndDateChange} value={departureEndDateInput} />
       </StyledLabel>
       <StyledLink
         to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}&departureStartDate=${
