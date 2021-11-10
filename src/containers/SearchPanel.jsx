@@ -52,7 +52,7 @@ const SearchPanelTo = styled(SearchPanelFrom)``
 const StyledLink = styled(Link)`
   text-decoration: none;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: row-reverse;
   width: 100px;
