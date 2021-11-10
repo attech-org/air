@@ -11,7 +11,8 @@ const StyledCityP = styled.p`
 `
 const ResultSection = styled.div`
   padding: 1em;
-  border-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -46,7 +47,6 @@ const Dot = styled.div`
 `
 
 const ChooseFlightSection = styled.div`
-  margin-top: -3px;
   height: 153px;
   padding: 0 80px 0 80px;
   background-color: #ececec;
@@ -59,7 +59,7 @@ const ChooseFlightSection = styled.div`
     border-bottom-right-radius: 4px;
     border-bottom: none;
   }
-  border-bottom: 4px solid white;
+  border-bottom: 1px solid white;
 `
 const CompanyInfo = styled.div`
   display: flex;
@@ -156,7 +156,6 @@ const SearchResultContainer = ({ filteredData, incomingData }) => {
   filteredData.forEach((el) => {
     const keyName = `${el.departureCity}-${el.arriveCity}`
     groupedData[keyName] = [...(groupedData[keyName] || []), el]
-    console.log(groupedData)
   })
 
   return (
