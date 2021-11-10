@@ -10,7 +10,7 @@ import SearchResultContainer from "../containers/SearchResult"
 const StyledLink = styled(Link)`
   text-decoration: none;
   position: absolute;
-  margin: 53px 0px 0px -22px;
+  margin: 28px 0px 0px -22px;
 `
 const StyledH2 = styled.h2`
   color: white;
@@ -26,13 +26,6 @@ const MainSection = styled.div`
 `
 const ContentSection = styled.div`
   margin: 34px 70px;
-`
-
-const Spinner = styled.p`
-  color: white;
-  font-size: 22px;
-  text-align: center;
-  margin-top: 93px;
 `
 
 const SOURCE_URL =
@@ -62,6 +55,7 @@ const SearchResultPage = () => {
       (!departureStartDateInput || new Date(departureDate) >= new Date(departureStartDateInput)) &&
       (!departureEndDateInput || new Date(departureDate) <= new Date(departureEndDateInput))
   )
+
   return (
     <Layout>
       <MainSection>
@@ -70,22 +64,8 @@ const SearchResultPage = () => {
           <StyledLink to='/'>
             <ArrowButton />
           </StyledLink>
-          {!incomingData.length && <Spinner>Loading . . .</Spinner>}
-          {filteredData.length
-            ? filteredData.map((el) => (
-                <SearchResultContainer
-                  key={el.id}
-                  departureCity={el.departureCity}
-                  arriveCity={el.arriveCity}
-                  flightCompany={el.flightCompany}
-                  flightCompanyLogo={el.flightCompanyLogo}
-                  departureDate={el.departureDate}
-                  flightDurationMinutes={el.flightDurationMinutes}
-                  price={el.price}
-                  priceCurrency={el.priceCurrency}
-                />
-              ))
-            : incomingData.length && <Spinner>No tickets available</Spinner>}
+          <SearchResultContainer incomingData={incomingData} filteredData={filteredData} />
+          ))
         </ContentSection>
       </MainSection>
     </Layout>
