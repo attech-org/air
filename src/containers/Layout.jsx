@@ -39,9 +39,9 @@ const StyledImg = styled.img`
   width: 140px;
   height: 60px;
 `
-const Layout = ({ children }) => {
+const Layout = ({ children, bgSrc }) => {
   return (
-    <Bg>
+    <Bg bgSrc={bgSrc}>
       <StyledHeader>
         <StyledLinkLogo to='/'>
           <StyledImg src={logo} alt='Logo' />
