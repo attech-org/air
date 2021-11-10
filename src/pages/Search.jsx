@@ -11,11 +11,8 @@ const StyledH1 = styled.h1`
 `
 
 const SearchSection = styled.div`
-  background: black;
   height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  max-width: 1400px;
 `
 const SearchSectionContent = styled.div`
   margin: 160px 70px;

@@ -20,7 +20,6 @@ const StyledH2 = styled.h2`
 `
 
 const MainSection = styled.div`
-  background: black;
   width: 100%;
   min-height: 100vh;
 `

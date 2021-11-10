@@ -13,7 +13,7 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 20, 1);
+  background: #000000;
   flex-direction: column;
   justify-content: space-between;
 `
@@ -39,9 +39,9 @@ const StyledImg = styled.img`
   width: 140px;
   height: 60px;
 `
-const Layout = ({ children, bgSrc }) => {
+const Layout = ({ children }) => {
   return (
-    <Bg bgSrc={bgSrc}>
+    <Bg>
       <StyledHeader>
         <StyledLinkLogo to='/'>
           <StyledImg src={logo} alt='Logo' />
