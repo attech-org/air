@@ -7,7 +7,9 @@ import PostPage from "./pages/Post"
 import PostsPage from "./pages/Posts"
 import SearchPage from "./pages/Search"
 import SearchResultPage from "./pages/SearchResult"
+// eslint-disable-next-line no-unused-vars
 import TourPageSingle from "./pages/TourPageSingle"
+import ToursPage from "./pages/ToursPage"
 
 import "./reset.css"
 
@@ -34,8 +36,10 @@ const App = () => {
         <Route path='/blog'>
           <PostsPage />
         </Route>
-        <Route path='/tours/:id' render={({ match }) => <TourPageSingle tourId={match.params.id} />} />
-
+        {/* <Route path='/tours/:id' render={({ match }) => <TourPageSingle tourId={match.params.id} />} /> */}
+        <Route path='/tours'>
+          <ToursPage />
+        </Route>
         <Route path='*'>
           <div>THIS PAGE NOT EXIST</div>
         </Route>
