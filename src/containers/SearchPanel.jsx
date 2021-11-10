@@ -43,8 +43,9 @@ const StyledInput = styled.input`
   width: 100%;
 `
 
-const FromTo = styled.p`
-  padding-left: 10px;
+const FromTo = styled.p``
+const FromToDate = styled(FromTo)`
+  margin-bottom: 3px;
 `
 const SearchPanelTo = styled(SearchPanelFrom)``
 
@@ -174,11 +175,11 @@ const SearchPanel = () => {
       </SearchPanelTo>
 
       <StyledLabel>
-        <FromTo> Start date </FromTo>
+        <FromToDate> Start date </FromToDate>
         <Date onChange={handleStartDateChange} value={departureStartDateInput} />
       </StyledLabel>
       <StyledLabel>
-        <FromTo> End date </FromTo>
+        <FromToDate> End date </FromToDate>
         <Date onChange={handleEndDateChange} value={departureEndDateInput} />
       </StyledLabel>
       <StyledLink
