@@ -13,7 +13,7 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 20, 1);
+  background: #000000;
   flex-direction: column;
   justify-content: space-between;
 `

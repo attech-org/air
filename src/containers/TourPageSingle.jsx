@@ -106,23 +106,25 @@ const Triangle = styled.div`
   width: 0;
   height: 0;
   border: solid 10px;
-  border-color: transparent transparent transparent white;
+  border-color: inherit;
   margin-left: 12px;
 `
 const Watch = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-
   background-color: #d60000;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 12px;
+  border-color: transparent transparent transparent white;
+  transition: 0.3s;
+
   &:hover {
     background-color: #b60000;
-    transition: 0.3s;
+    border-color: transparent transparent transparent lightgray;
   }
 `
 const TourPageSingleContainer = ({ id, backgroundSrc, title, location, country, videoUrl, wikiUrl }) => {

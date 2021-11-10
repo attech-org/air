@@ -10,61 +10,58 @@ const StyledP = styled.p`
   margin-right: 10px;
 `
 
-const StyledLabel = styled.label`
-  display: flex;
-  height: 60px;
-  flex-direction: column;
-  justify-content: center;
-  color: gray;
-  line-height: 2em;
-`
-const InputSection = styled.div`
-  display: flex;
-`
-
 const SearchPanelSection = styled.div`
-  height: 60px;
-  width: 100%;
+  background-color: white;
+  padding: 30px 60px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 1080px) {
+    padding: 30px;
+    flex-direction: column;
+  }
 `
 
-const SearchPanelFrom = styled.div`
+const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  margin-right: 60px;
-`
+  justify-content: center;
+  color: gray;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-right: 3em;
+  font-size: 90%;
 
+  @media (max-width: 1080px) {
+    margin-bottom: 2em;
+    margin-right: 0;
+  }
+`
 const StyledInput = styled.input`
   border: none;
+  border-bottom: 1px solid gray;
   padding: 10px 0px 10px 10px;
+  font-size: 16px;
+  width: calc(100% - 10px);
+  margin-top: 5px;
 `
-
-const FromTo = styled.p`
-  padding-left: 10px;
-`
-const SearchPanelTo = styled(SearchPanelFrom)``
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: row-reverse;
   width: 100px;
   height: 100px;
 `
-const StyledForm = styled.form`
-  width: 350px;
-  height: 40px;
-  position: relative;
-`
 const Autocomplete = styled.ul`
   position: absolute;
   left: 0;
-  top: 50px;
+  top: 100%;
   width: 100%;
   background: white;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
@@ -79,6 +76,10 @@ const AutocompleteItem = styled.li`
     cursor: pointer;
     transition: 1s;
   }
+`
+const Date = styled(DatePicker)`
+  border: 1px solid gray;
+  border-radius: 4px;
 `
 const SearchPanel = () => {
   const [departureCityInput, onDepartureInputChange] = useState("")
@@ -133,54 +134,40 @@ const SearchPanel = () => {
   ]
   return (
     <SearchPanelSection>
-      <InputSection>
-        <SearchPanelFrom>
-          <StyledLabel>
-            <FromTo>From</FromTo>
-            <StyledForm>
-              <StyledInput
-                onChange={handleFromChange}
-                value={departureCityInput}
-                type='text'
-                placeholder='Kryvyi Rih'
-              />
-              {departureCityInput && Boolean(autocompleteDCities.length) && (
-                <Autocomplete>
-                  {autocompleteDCities.map((city, index) => (
-                    <AutocompleteItem onClick={() => itemClickHandler("depart", city)} key={index}>
-                      {city}
-                    </AutocompleteItem>
-                  ))}
-                </Autocomplete>
-              )}
-            </StyledForm>
-          </StyledLabel>
-        </SearchPanelFrom>
-        <SearchPanelTo>
-          <StyledLabel>
-            <FromTo> To </FromTo>
-            <StyledForm>
-              <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' placeholder='San Francisco' />
-              {arrivalCityInput && Boolean(autocompleteACities.length) && (
-                <Autocomplete>
-                  {autocompleteACities.map((city, index) => (
-                    <AutocompleteItem onClick={() => itemClickHandler("arrive", city)} key={index}>
-                      {city}
-                    </AutocompleteItem>
-                  ))}
-                </Autocomplete>
-              )}
-            </StyledForm>
-          </StyledLabel>
-        </SearchPanelTo>
-      </InputSection>
       <StyledLabel>
-        <FromTo> Start date </FromTo>
-        <DatePicker onChange={handleStartDateChange} value={departureStartDateInput} />
+        From
+        <StyledInput onChange={handleFromChange} value={departureCityInput} type='text' />
+        {departureCityInput && Boolean(autocompleteDCities.length) && (
+          <Autocomplete>
+            {autocompleteDCities.map((city, index) => (
+              <AutocompleteItem onClick={() => itemClickHandler("depart", city)} key={index}>
+                {city}
+              </AutocompleteItem>
+            ))}
+          </Autocomplete>
+        )}
       </StyledLabel>
       <StyledLabel>
-        <FromTo> End date </FromTo>
-        <DatePicker onChange={handleEndDateChange} value={departureEndDateInput} />
+        To
+        <StyledInput onChange={handleToChange} value={arrivalCityInput} type='text' />
+        {arrivalCityInput && Boolean(autocompleteACities.length) && (
+          <Autocomplete>
+            {autocompleteACities.map((city, index) => (
+              <AutocompleteItem onClick={() => itemClickHandler("arrive", city)} key={index}>
+                {city}
+              </AutocompleteItem>
+            ))}
+          </Autocomplete>
+        )}
+      </StyledLabel>
+
+      <StyledLabel>
+        Start date
+        <Date onChange={handleStartDateChange} value={departureStartDateInput} />
+      </StyledLabel>
+      <StyledLabel>
+        End date
+        <Date onChange={handleEndDateChange} value={departureEndDateInput} />
       </StyledLabel>
       <StyledLink
         to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}&departureStartDate=${
