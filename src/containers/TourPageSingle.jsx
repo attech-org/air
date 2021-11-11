@@ -156,9 +156,7 @@ const TourPageSingleContainer = ({ id, backgroundSrc, title, location, country, 
               </StyledLink>
             </BtnBox>
             <InfoBox>
-              {videoUrl === null ? (
-                <div />
-              ) : (
+              {videoUrl && (
                 <StyledP>
                   {" "}
                   <StyledA target='_blank' href={videoUrl}>
@@ -169,9 +167,7 @@ const TourPageSingleContainer = ({ id, backgroundSrc, title, location, country, 
                   </StyledA>
                 </StyledP>
               )}
-              {wikiUrl === null ? (
-                <div />
-              ) : (
+              {wikiUrl && (
                 <StyledP>
                   {" "}
                   <StyledWikiA target='_blank' href={wikiUrl}>
