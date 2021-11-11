@@ -73,9 +73,7 @@ const InfoBox = styled.div`
   align-items: center;
 `
 const StyledA = styled.a`
-  &:visited {
-    color: white;
-  }
+  color: inherit;
   display: flex;
   align-items: center;
   cursor: pointer;
