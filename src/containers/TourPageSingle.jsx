@@ -32,7 +32,7 @@ const Background = styled.div`
   box-shadow: 0 0 30px 4px black;
   backdrop-filter: blur(3px);
   margin: 30px 150px 30px 150px;
-  padding: 30px 50px 0 50px;
+  padding: 45px 50px 0 50px;
 `
 
 const BtnBox = styled.div`
@@ -52,9 +52,10 @@ const BackBtn = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 15px;
+  transition: 0.3s;
+
   &:hover {
     background-color: #bbbbbb;
-    transition: 0.3s;
   }
 `
 const Arrow = styled.p`
@@ -88,18 +89,18 @@ const StyledWikiA = styled(StyledA)`
   height: 30px;
   background-color: black;
   border: 1px solid white;
+  transition: 0.3s;
   &:hover {
     background-color: #ffffff;
-    transition: 0.3s;
   }
 `
 
 const StyledP = styled.p`
   color: white;
   font-size: 14px;
+  transition: 0.3s;
   &:hover {
     color: black;
-    transition: 0.3s;
   }
   margin-left: 65px;
 `
