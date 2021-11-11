@@ -13,7 +13,7 @@ const Card = styled(Link)`
   margin-bottom: 80px;
 `
 
-const PreviewImg = styled.img`
+const PreviewImg = styled.div`
   width: 240px;
   height: 240px;
   margin-bottom: 50px;
@@ -62,7 +62,7 @@ const IconFavor = styled.img`
 
 const TourCard = ({ url, title, location, country, bgUrl }) => {
   return (
-    <Card to={`/tour/${url.toString()}`}>
+    <Card to={`/tours/${url.toString()}`}>
       <PreviewImg bg={bgUrl} alt={title} />
       <Title>{title}</Title>
       <LocationRow>

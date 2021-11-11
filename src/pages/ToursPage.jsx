@@ -64,7 +64,7 @@ const RightRowButton = styled(LeftRowButton)`
   }
 `
 
-function ToursPage() {
+const ToursPage = () => {
   return (
     <Layout>
       <Main>
