@@ -6,6 +6,8 @@ import PostCard from "../components/PostCard"
 const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+
   @media (max-width: 1080px) {
     justify-content: space-evenly;
   }
