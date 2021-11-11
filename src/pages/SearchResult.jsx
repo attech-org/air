@@ -11,12 +11,18 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   position: absolute;
   margin: 28px 0px 0px -22px;
+  @media (max-width: 1080px) {
+    margin: 28px 0 0 70px;
+  }
 `
 const StyledH2 = styled.h2`
   color: white;
   margin-bottom: 35px;
   font-size: 5vh;
   margin-bottom: 4vh;
+  @media (max-width: 1080px) {
+    padding-left: 70px;
+  }
 `
 
 const MainSection = styled.div`
@@ -25,6 +31,9 @@ const MainSection = styled.div`
 `
 const ContentSection = styled.div`
   margin: 34px 70px;
+  @media (max-width: 1080px) {
+    margin: 30px 0;
+  }
 `
 
 const SOURCE_URL =
@@ -64,7 +73,6 @@ const SearchResultPage = () => {
             <ArrowButton />
           </StyledLink>
           <SearchResultContainer incomingData={incomingData} filteredData={filteredData} />
-          ))
         </ContentSection>
       </MainSection>
     </Layout>

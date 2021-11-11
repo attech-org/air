@@ -30,7 +30,7 @@ const StyledIconBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 30px 0 30px;
+  margin: 0 30px;
 `
 
 const StyledImg = styled.img`
@@ -48,9 +48,8 @@ const Dot = styled.div`
 
 const ChooseFlightSection = styled.div`
   height: 153px;
-  padding: 0 80px 0 80px;
+  padding: 0 80px;
   background-color: #ececec;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,11 +59,20 @@ const ChooseFlightSection = styled.div`
     border-bottom: none;
   }
   border-bottom: 1px solid white;
+  @media (max-width: 1080px) {
+    padding: 0 70px;
+    height: 180px;
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 const CompanyInfo = styled.div`
   display: flex;
   align-items: center;
   width: 15%;
+  @media (max-width: 1080px) {
+    width: 30%;
+  }
 `
 const CompanyLogoImg = styled.img`
   width: 20px;
@@ -82,6 +90,9 @@ const DateBox = styled.div`
   line-height: 2em;
   width: 165px;
   height: 68%;
+  @media (max-width: 1080px) {
+    height: auto;
+  }
 `
 
 const FlightDurationP = styled.p`
@@ -118,6 +129,11 @@ const StopsIndicator = styled.div`
   flex-direction: column;
   width: 165px;
   height: 68%;
+  @media (max-width: 1080px) {
+    width: 190px;
+    height: auto;
+    margin-bottom: 9px;
+  }
 `
 const StopsDiv = styled.div`
   width: 100%;
@@ -125,6 +141,9 @@ const StopsDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 28px;
+  @media (max-width: 1080px) {
+    margin-bottom: 15px;
+  }
 `
 const StopsP = styled.p`
   width: 55px;
@@ -143,6 +162,10 @@ const Price = styled.div`
   display: flex;
   justify-content: center;
   width: 10%;
+  @media (max-width: 1080px) {
+    align-items: center;
+    width: 30%;
+  }
 `
 const Spinner = styled.p`
   color: white;
@@ -150,6 +173,20 @@ const Spinner = styled.p`
   text-align: center;
   margin-top: 93px;
 `
+
+const AdaptiveSect = styled.div`
+  display: flex;
+  justify-content: space-around;
+  @media (max-width: 1080px) {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    &:last-of-type {
+      margin-top: 25px;
+    }
+  }
+`
+
 const SearchResultContainer = ({ filteredData, incomingData }) => {
   const groupedData = {}
 
@@ -206,42 +243,46 @@ const SearchResultContainer = ({ filteredData, incomingData }) => {
                       }
                       return (
                         <ChooseFlightSection key={el.id}>
-                          <CompanyInfo>
-                            <CompanyLogoImg
-                              src={el.flightCompanyLogo || "https://via.placeholder.com/150"}
-                              alt='Logo'
-                            />
-                            <StyledP>{el.flightCompany}</StyledP>
-                          </CompanyInfo>
-                          <DateBox>
-                            <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
-                            <FlightDurationP>{departureTime.toDateString()}</FlightDurationP>
-                          </DateBox>
-                          <StopsIndicator>
-                            <StopsDiv>
-                              <Dot />
-                              <Dot />
-                              <Dot />
-                              <StopsP>0 Stops</StopsP>
-                              <Dot />
-                              <Dot />
-                              <Dot />
-                            </StopsDiv>
-                            <FlightDurationP>{flightDuration()}</FlightDurationP>
-                          </StopsIndicator>
-                          <DateBox>
-                            <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
-                            <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
-                          </DateBox>
-                          <Price>
-                            <TimeP>
-                              {Math.ceil(el.price) + " "}
-                              {el.priceCurrency || " USD"}
-                            </TimeP>
-                          </Price>
-                          <BookBtn to={`/orderPayment?price=${el.price}&priceCurrency=${el.priceCurrency}`}>
-                            <BookP>Book Now</BookP>
-                          </BookBtn>
+                          <AdaptiveSect>
+                            <CompanyInfo>
+                              <CompanyLogoImg
+                                src={el.flightCompanyLogo || "https://via.placeholder.com/150"}
+                                alt='Logo'
+                              />
+                              <StyledP>{el.flightCompany}</StyledP>
+                            </CompanyInfo>
+                            <DateBox>
+                              <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
+                              <FlightDurationP>{departureTime.toDateString()}</FlightDurationP>
+                            </DateBox>
+                            <StopsIndicator>
+                              <StopsDiv>
+                                <Dot />
+                                <Dot />
+                                <Dot />
+                                <StopsP>0 Stops</StopsP>
+                                <Dot />
+                                <Dot />
+                                <Dot />
+                              </StopsDiv>
+                              <FlightDurationP>{flightDuration()}</FlightDurationP>
+                            </StopsIndicator>
+                            <DateBox>
+                              <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
+                              <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
+                            </DateBox>
+                          </AdaptiveSect>
+                          <AdaptiveSect>
+                            <Price>
+                              <TimeP>
+                                {Math.ceil(el.price) + " "}
+                                {el.priceCurrency || " USD"}
+                              </TimeP>
+                            </Price>
+                            <BookBtn to={`/orderPayment?price=${el.price}&priceCurrency=${el.priceCurrency}`}>
+                              <BookP>Book Now</BookP>
+                            </BookBtn>
+                          </AdaptiveSect>
                         </ChooseFlightSection>
                       )
                     })}
