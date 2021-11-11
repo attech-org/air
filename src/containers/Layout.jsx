@@ -67,7 +67,7 @@ var styles = {
     top: "36px",
   },
   bmBurgerBars: {
-    background: "#373a47",
+    background: "#cacaca",
   },
   bmBurgerBarsHover: {
     background: "#a90000",
