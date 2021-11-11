@@ -8,7 +8,7 @@ const Grid = styled.div`
   flex-wrap: wrap;
 `
 
-const Spinner = styled.div`
+export const Spinner = styled.div`
   width: 100%;
   height: 100vh;
   color: white;
