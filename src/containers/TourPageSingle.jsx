@@ -16,7 +16,8 @@ const CountryP = styled(LocationP)``
 const MainSection = styled.section`
   background-image: ${(props) => `url(${props.bgSrc})`};
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: calc(100vh - 50px * 2); // minus height of header
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -24,16 +25,16 @@ const MainSection = styled.section`
   justify-content: center;
 `
 const Background = styled.div`
-  width: 90%;
-  background-color: #00000050;
-  box-shadow: 0px -5px 16px black;
-`
-const Content = styled.section`
   display: flex;
   flex-direction: column;
-
-  padding: 100px 80px 143px 80px;
+  width: 90%;
+  background-color: #00000047;
+  box-shadow: 0 0 30px 4px black;
+  backdrop-filter: blur(3px);
+  margin: 30px 150px 30px 150px;
+  padding: 45px 50px 0 50px;
 `
+
 const BtnBox = styled.div`
   display: flex;
 `
@@ -51,9 +52,10 @@ const BackBtn = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 15px;
+  transition: 0.3s;
+
   &:hover {
     background-color: #bbbbbb;
-    transition: 0.3s;
   }
 `
 const Arrow = styled.p`
@@ -87,18 +89,18 @@ const StyledWikiA = styled(StyledA)`
   height: 30px;
   background-color: black;
   border: 1px solid white;
+  transition: 0.3s;
   &:hover {
     background-color: #ffffff;
-    transition: 0.3s;
   }
 `
 
 const StyledP = styled.p`
   color: white;
   font-size: 14px;
+  transition: 0.3s;
   &:hover {
     color: black;
-    transition: 0.3s;
   }
   margin-left: 65px;
 `
@@ -132,24 +134,29 @@ const TourPageSingleContainer = ({ id, backgroundSrc, title, location, country, 
     <>
       <MainSection bgSrc={backgroundSrc}>
         <Background>
-          <Content>
-            <TitleH1>{title}</TitleH1>
-            <LocationP>{location}</LocationP>
-            <CountryP>{country}</CountryP>
-            <BottomSection>
-              <BtnBox>
-                <StyledLink to={`/tours/${+id - 1}`}>
+          <TitleH1>{title}</TitleH1>
+          <LocationP>{location}</LocationP>
+          <CountryP>{country}</CountryP>
+          <BottomSection>
+            <BtnBox>
+              {+id <= 0 ? (
+                <div />
+              ) : (
+                <StyledLink to={`/tours/${+id - 1} `}>
                   <BackBtn>
                     <Arrow>&#8592;</Arrow>
                   </BackBtn>
                 </StyledLink>
-                <StyledLink to={`/tours/${+id + 1}`}>
-                  <BackBtn>
-                    <Arrow>&#8594;</Arrow>
-                  </BackBtn>
-                </StyledLink>
-              </BtnBox>
-              <InfoBox>
+              )}
+
+              <StyledLink to={`/tours/${+id + 1}`}>
+                <BackBtn>
+                  <Arrow>&#8594;</Arrow>
+                </BackBtn>
+              </StyledLink>
+            </BtnBox>
+            <InfoBox>
+              {videoUrl && (
                 <StyledP>
                   {" "}
                   <StyledA target='_blank' href={videoUrl}>
@@ -159,15 +166,17 @@ const TourPageSingleContainer = ({ id, backgroundSrc, title, location, country, 
                     Watch the video
                   </StyledA>
                 </StyledP>
+              )}
+              {wikiUrl && (
                 <StyledP>
                   {" "}
                   <StyledWikiA target='_blank' href={wikiUrl}>
                     More info
                   </StyledWikiA>
                 </StyledP>
-              </InfoBox>
-            </BottomSection>
-          </Content>
+              )}
+            </InfoBox>
+          </BottomSection>
         </Background>
       </MainSection>
     </>
