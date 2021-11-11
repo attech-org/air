@@ -10,12 +10,19 @@ const FormCapacity = styled.div`
   width: 65%;
   border-radius: 5px;
   background: rgba(255, 255, 255, 1);
+  @media (max-width: 1080px) {
+    width: calc(100% - 50px * 2);
+    padding: 50px;
+  }
 `
 
 const H2 = styled.h2`
   font-size: 1.5em;
   margin: 0 0 20px 0;
   font-weight: 600;
+  @media (max-width: 1080px) {
+    margin: 0;
+  }
 `
 
 const ImgLogo = styled.img`
@@ -31,16 +38,25 @@ const PrevLink = styled.a`
   box-sizing: border-box;
   margin: -5px 55px 0 -91px;
   text-decoration: none;
+  @media (max-width: 1080px) {
+    margin: 0 18px 0 0;
+  }
 `
 
 const BlockEnvelop = styled.div`
   display: flex;
   margin-bottom: 35px;
+  @media (max-width: 1080px) {
+    justify-content: flex-start;
+    align-items: center;
+  }
 `
 
 const FormEnvelop = styled.form`
   display: flex;
   margin-top: 45px;
+  @media (max-width: 1080px) {
+  }
 `
 
 export const Label = styled.label`
@@ -51,18 +67,18 @@ export const Label = styled.label`
 const LabelAgree = styled.label`
   color: rgba(172, 170, 170, 1);
   font-size: 0.85em;
-  margin-top: 45px;
+  margin-top: 15px;
 `
 
 const ColLeft = styled.div`
-  width: 25vw;
+  width: 55%;
   display: flex;
   flex-direction: column;
   padding-right: 20px;
 `
 
 const ColRight = styled.div`
-  width: 7vw;
+  width: 20%;
   display: flex;
   flex-direction: column;
 `
@@ -111,7 +127,7 @@ const OrderForm = ({ onChangeForm }) => {
         </ColLeft>
 
         <ColRight>
-          <Label htmlFor='expicyCard'>Expicy</Label>
+          <Label htmlFor='expicyCard'>Expiry</Label>
           <Input type='text' id='expicyCard' {...register("expicyCard")} />
           <Label htmlFor='cvvCard'>CVV</Label>
           <Input type='password' id='cvvCard' maxLength='3' {...register("cvvCard")} />
