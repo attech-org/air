@@ -8,6 +8,9 @@ const OrderPayment = styled.div`
   display: flex;
   background: rgba(30, 30, 30, 1);
   border-radius: 5px 0 0 5px;
+  @media (max-width: 1080px) {
+    flex-direction: column;
+  }
 `
 
 const Title = styled.h1`
