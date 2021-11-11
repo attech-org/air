@@ -17,7 +17,7 @@ const SearchSection = styled.div`
   margin-top: 160px;
   padding: 0 30px;
 
-  @media (max-width: 720px) {
+  @media (max-width: 1080px) {
     padding: 0 5px;
     width: calc(100% - 5px * 2); // horizontal padding
   }
