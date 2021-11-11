@@ -10,6 +10,7 @@ import SearchResultPage from "./pages/SearchResult"
 import TourPageSingle from "./pages/TourPageSingle"
 
 import "./reset.css"
+import "./index.css"
 
 const App = () => {
   return (

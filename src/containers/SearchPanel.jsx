@@ -1,7 +1,7 @@
 import { useState } from "react"
 import DatePicker from "react-date-picker"
 import { Link } from "react-router-dom"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import ArrowButton from "../components/ArrowButton"
 
@@ -40,7 +40,8 @@ const StyledLabel = styled.label`
     margin-right: 0;
   }
 `
-const StyledInput = styled.input`
+
+const InputStyles = css`
   border: none;
   border-bottom: 1px solid gray;
   padding: 10px 0px 10px 10px;
@@ -49,6 +50,13 @@ const StyledInput = styled.input`
   margin-top: 5px;
 `
 
+const StyledInput = styled.input`
+  ${InputStyles}
+`
+const DateInput = styled(DatePicker)`
+  ${InputStyles}
+  padding: 10px 0 0 10px;
+`
 const StyledLink = styled(Link)`
   text-decoration: none;
   display: flex;
@@ -76,10 +84,6 @@ const AutocompleteItem = styled.li`
     cursor: pointer;
     transition: 1s;
   }
-`
-const Date = styled(DatePicker)`
-  border: 1px solid gray;
-  border-radius: 4px;
 `
 const SearchPanel = () => {
   const [departureCityInput, onDepartureInputChange] = useState("")
@@ -163,11 +167,11 @@ const SearchPanel = () => {
 
       <StyledLabel>
         Start date
-        <Date onChange={handleStartDateChange} value={departureStartDateInput} />
+        <DateInput onChange={handleStartDateChange} value={departureStartDateInput} />
       </StyledLabel>
       <StyledLabel>
         End date
-        <Date onChange={handleEndDateChange} value={departureEndDateInput} />
+        <DateInput onChange={handleEndDateChange} value={departureEndDateInput} />
       </StyledLabel>
       <StyledLink
         to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}&departureStartDate=${
