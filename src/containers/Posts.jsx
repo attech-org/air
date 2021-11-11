@@ -6,6 +6,7 @@ import PostCard from "../components/PostCard"
 const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 `
 
 export const Spinner = styled.div`
