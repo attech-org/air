@@ -4,6 +4,10 @@ const BookingSummaryCapacity = styled.div`
   width: 35%;
   padding: 80px 70px;
   color: rgba(255, 255, 255, 1);
+  @media (max-width: 1080px) {
+    width: calc(100% - 50px * 2); /*Padding*/
+    padding: 50px;
+  }
 `
 
 const H2 = styled.h2`

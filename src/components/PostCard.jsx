@@ -6,7 +6,7 @@ const Card = styled(Link)`
   height: 300px;
   background-color: white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  margin: 0.5em;
+  margin: 0 0.5em 3em 0;
   border-radius: 10px;
   text-decoration: none;
   color: inherit;
