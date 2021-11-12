@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://attech-org.github.io/air/static/css/main.1ed729c9.chunk.css",
-    "main.js": "https://attech-org.github.io/air/static/js/main.8a28fdca.chunk.js",
-    "main.js.map": "https://attech-org.github.io/air/static/js/main.8a28fdca.chunk.js.map",
+    "main.js": "https://attech-org.github.io/air/static/js/main.cf500e12.chunk.js",
+    "main.js.map": "https://attech-org.github.io/air/static/js/main.cf500e12.chunk.js.map",
     "runtime-main.js": "https://attech-org.github.io/air/static/js/runtime-main.308d0983.js",
     "runtime-main.js.map": "https://attech-org.github.io/air/static/js/runtime-main.308d0983.js.map",
     "static/css/2.ba1b51e3.chunk.css": "https://attech-org.github.io/air/static/css/2.ba1b51e3.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.ba1b51e3.chunk.css",
     "static/js/2.988b126d.chunk.js",
     "static/css/main.1ed729c9.chunk.css",
-    "static/js/main.8a28fdca.chunk.js"
+    "static/js/main.cf500e12.chunk.js"
   ]
 }
