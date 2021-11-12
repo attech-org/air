@@ -10,6 +10,10 @@ const Grid = styled.div`
   justify-content: space-between;
   width: calc(100% - 80px * 2);
   padding: 80px;
+  @media (max-width: 1080px) {
+    display: flex;
+    justify-content: space-evenly;
+  }
 `
 
 const SOURCE_URL = "https://my.api.mockaroo.com/tours?key=6b9b6f90"

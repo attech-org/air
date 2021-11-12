@@ -30,7 +30,10 @@ const StyledIconBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 30px 0 30px;
+  margin: 0 30px;
+  @media (max-width: 1080px) {
+    justify-content: center;
+  }
 `
 
 const StyledImg = styled.img`
@@ -44,13 +47,14 @@ const Dot = styled.div`
   height: 6px;
   border-radius: 50%;
   background-color: #999999;
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `
 
 const ChooseFlightSection = styled.div`
-  height: 153px;
-  padding: 0 80px 0 80px;
+  padding: 1rem 3rem;
   background-color: #ececec;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,11 +64,20 @@ const ChooseFlightSection = styled.div`
     border-bottom: none;
   }
   border-bottom: 1px solid white;
+  @media (max-width: 1080px) {
+    padding: 1rem;
+    height: 180px;
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 const CompanyInfo = styled.div`
   display: flex;
   align-items: center;
-  width: 15%;
+  flex: 0 0 25%;
+  @media (max-width: 1080px) {
+    width: auto;
+  }
 `
 const CompanyLogoImg = styled.img`
   width: 20px;
@@ -80,17 +93,23 @@ const DateBox = styled.div`
   justify-content: center;
   align-items: center;
   line-height: 2em;
-  width: 165px;
   height: 68%;
+  @media (max-width: 1080px) {
+    height: auto;
+  }
 `
 
 const FlightDurationP = styled.p`
   font-size: 14px;
   color: gray;
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `
 const TimeP = styled.p`
   font-weight: bold;
   font-size: 20px;
+  white-space: nowrap;
 `
 const BookBtn = styled(Link)`
   border: 3px solid #d30000;
@@ -118,6 +137,12 @@ const StopsIndicator = styled.div`
   flex-direction: column;
   width: 165px;
   height: 68%;
+  margin: 0 0.5rem;
+  @media (max-width: 1080px) {
+    width: auto;
+    height: auto;
+    justify-content: center;
+  }
 `
 const StopsDiv = styled.div`
   width: 100%;
@@ -125,6 +150,9 @@ const StopsDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 28px;
+  @media (max-width: 1080px) {
+    margin-bottom: 0;
+  }
 `
 const StopsP = styled.p`
   width: 55px;
@@ -142,7 +170,13 @@ const StopsP = styled.p`
 const Price = styled.div`
   display: flex;
   justify-content: center;
-  width: 10%;
+  margin-right: 2rem;
+  @media (max-width: 1080px) {
+    align-items: center;
+    width: auto;
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
 `
 const Spinner = styled.p`
   color: white;
@@ -150,6 +184,23 @@ const Spinner = styled.p`
   text-align: center;
   margin-top: 93px;
 `
+
+const DatesInfoBlock = styled.div`
+  display: flex;
+  margin: 1rem 0;
+`
+
+const ActionsBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 25%;
+  @media (max-width: 1080px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
 const SearchResultContainer = ({ filteredData, incomingData }) => {
   const groupedData = {}
 
@@ -213,35 +264,39 @@ const SearchResultContainer = ({ filteredData, incomingData }) => {
                             />
                             <StyledP>{el.flightCompany}</StyledP>
                           </CompanyInfo>
-                          <DateBox>
-                            <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
-                            <FlightDurationP>{departureTime.toDateString()}</FlightDurationP>
-                          </DateBox>
-                          <StopsIndicator>
-                            <StopsDiv>
-                              <Dot />
-                              <Dot />
-                              <Dot />
-                              <StopsP>0 Stops</StopsP>
-                              <Dot />
-                              <Dot />
-                              <Dot />
-                            </StopsDiv>
-                            <FlightDurationP>{flightDuration()}</FlightDurationP>
-                          </StopsIndicator>
-                          <DateBox>
-                            <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
-                            <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
-                          </DateBox>
-                          <Price>
-                            <TimeP>
-                              {Math.ceil(el.price) + " "}
-                              {el.priceCurrency || " USD"}
-                            </TimeP>
-                          </Price>
-                          <BookBtn to={`/orderPayment?price=${el.price}&priceCurrency=${el.priceCurrency}`}>
-                            <BookP>Book Now</BookP>
-                          </BookBtn>
+                          <DatesInfoBlock>
+                            <DateBox>
+                              <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
+                              <FlightDurationP>{departureTime.toDateString()}</FlightDurationP>
+                            </DateBox>
+                            <StopsIndicator>
+                              <StopsDiv>
+                                <Dot />
+                                <Dot />
+                                <Dot />
+                                <StopsP>0 Stops</StopsP>
+                                <Dot />
+                                <Dot />
+                                <Dot />
+                              </StopsDiv>
+                              <FlightDurationP>{flightDuration()}</FlightDurationP>
+                            </StopsIndicator>
+                            <DateBox>
+                              <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
+                              <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
+                            </DateBox>
+                          </DatesInfoBlock>
+                          <ActionsBox>
+                            <Price>
+                              <TimeP>
+                                {Math.ceil(el.price) + " "}
+                                {el.priceCurrency || " USD"}
+                              </TimeP>
+                            </Price>
+                            <BookBtn to={`/orderPayment?price=${el.price}&priceCurrency=${el.priceCurrency}`}>
+                              <BookP>Book Now</BookP>
+                            </BookBtn>
+                          </ActionsBox>
                         </ChooseFlightSection>
                       )
                     })}

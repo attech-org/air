@@ -26,12 +26,18 @@ const MainSection = styled.section`
 const Background = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 90%;
-  background-color: #00000047;
-  box-shadow: 0 0 30px 4px black;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 30px 4px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3px);
   margin: 30px 150px 30px 150px;
-  padding: 45px 50px 0 50px;
+  padding: 50px;
+
+  @media (max-width: 1080px) {
+    margin: 20px;
+    padding: 30px;
+  }
 `
 
 const BtnBox = styled.div`
@@ -65,11 +71,26 @@ const Arrow = styled.p`
 const BottomSection = styled.section`
   display: flex;
   justify-content: space-between;
-  margin-top: 43vh;
+
+  @media (max-width: 1080px) {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    line-height: 6.5em;
+  }
 `
 const InfoBox = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 1080px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
 `
 const StyledA = styled.a`
   color: inherit;
@@ -92,7 +113,7 @@ const StyledWikiA = styled(StyledA)`
   }
 `
 
-const StyledP = styled.p`
+const StyledP = styled.div`
   color: white;
   font-size: 14px;
   transition: 0.3s;
@@ -100,6 +121,11 @@ const StyledP = styled.p`
     color: black;
   }
   margin-left: 65px;
+  width: 100%;
+  @media (max-width: 1080px) {
+    margin: 0;
+    left: 0;
+  }
 `
 const Triangle = styled.div`
   width: 0;
@@ -131,9 +157,11 @@ const TourPageSingleContainer = ({ id, backgroundSrc, title, location, country, 
     <>
       <MainSection bgSrc={backgroundSrc}>
         <Background>
-          <TitleH1>{title}</TitleH1>
-          <LocationP>{location}</LocationP>
-          <CountryP>{country}</CountryP>
+          <div>
+            <TitleH1>{title}</TitleH1>
+            <LocationP>{location}</LocationP>
+            <CountryP>{country}</CountryP>
+          </div>
           <BottomSection>
             <BtnBox>
               {+id <= 0 ? (
