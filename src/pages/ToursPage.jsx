@@ -12,6 +12,9 @@ const HeaderSection = styled.div`
   padding: 0 80px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 1080px) {
+    padding: 0 35px;
+  }
 `
 
 const TitleWrap = styled.div`
@@ -19,11 +22,18 @@ const TitleWrap = styled.div`
   justify-content: flex-start;
   align-items: flex-end;
   margin: 35px 0;
+  @media (max-width: 1080px) {
+    display: flex;
+    justify-content: flex-start;
+  }
 `
 
 const H1 = styled.h1`
   font-size: 5em;
   font-weight: 700;
+  @media (max-width: 1080px) {
+    margin-right: 20px;
+  }
 `
 
 const Slogan = styled.p`
@@ -31,6 +41,9 @@ const Slogan = styled.p`
   font-weight: 400;
   padding: 0 0 3px 45px;
   font-size: 0.9em;
+  @media (max-width: 1080px) {
+    padding: 0 0 0 0;
+  }
 `
 
 const Filters = styled.div`
@@ -40,6 +53,9 @@ const Filters = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `
 
 const LeftWrap = styled.div``
