@@ -26,6 +26,7 @@ const StyledMain = styled.main`
   background: #000000;
   flex-direction: column;
   justify-content: space-between;
+  height: calc(100vh - 100px);
 `
 const StyledMenu = styled(slide)``
 const StyledLink = styled(Link)`
@@ -96,6 +97,7 @@ var styles = {
   bmItemList: {
     color: "#b8b7ad",
     padding: "0.8em",
+    height: "calc(100% - 0.8em * 2)",
     display: "flex",
     flexDirection: "column",
   },
@@ -140,7 +142,6 @@ const Layout = ({ children, bgSrc }) => {
         </StyledMenu>
       </StyledHeader>
       <StyledMain>{children}</StyledMain>
-      <footer>footer</footer>
     </Bg>
   )
 }

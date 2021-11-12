@@ -16,8 +16,7 @@ const CountryP = styled(LocationP)``
 const MainSection = styled.section`
   background-image: ${(props) => `url(${props.bgSrc})`};
   width: 100%;
-  height: 100vh;
-  max-height: calc(100vh - 50px * 2); // minus height of header
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
