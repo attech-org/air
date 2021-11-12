@@ -76,6 +76,7 @@ const Autocomplete = styled.ul`
   max-height: 240px;
   height: auto;
   overflow: auto;
+  z-index: 2;
 `
 const AutocompleteItem = styled.li`
   padding: 10px;
@@ -167,11 +168,11 @@ const SearchPanel = () => {
 
       <StyledLabel>
         Start date
-        <DateInput onChange={handleStartDateChange} value={departureStartDateInput} />
+        <DateInput locale='en' onChange={handleStartDateChange} value={departureStartDateInput} />
       </StyledLabel>
       <StyledLabel>
         End date
-        <DateInput onChange={handleEndDateChange} value={departureEndDateInput} />
+        <DateInput locale='en' onChange={handleEndDateChange} value={departureEndDateInput} />
       </StyledLabel>
       <StyledLink
         to={`/search-result?departureCity=${departureCityInput}&arrivalCity=${arrivalCityInput}&departureStartDate=${

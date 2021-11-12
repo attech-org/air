@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
   position: absolute;
   margin: 28px 0px 0px -22px;
   @media (max-width: 1080px) {
-    margin: 28px 0 0 70px;
+    display: none;
   }
 `
 const StyledH2 = styled.h2`
@@ -21,7 +21,7 @@ const StyledH2 = styled.h2`
   font-size: 5vh;
   margin-bottom: 4vh;
   @media (max-width: 1080px) {
-    padding-left: 70px;
+    padding-left: 36px;
   }
 `
 

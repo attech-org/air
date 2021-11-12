@@ -31,6 +31,9 @@ const StyledIconBox = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0 30px;
+  @media (max-width: 1080px) {
+    justify-content: center;
+  }
 `
 
 const StyledImg = styled.img`
@@ -44,11 +47,13 @@ const Dot = styled.div`
   height: 6px;
   border-radius: 50%;
   background-color: #999999;
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `
 
 const ChooseFlightSection = styled.div`
-  height: 153px;
-  padding: 0 80px;
+  padding: 1rem 3rem;
   background-color: #ececec;
   display: flex;
   justify-content: space-between;
@@ -60,7 +65,7 @@ const ChooseFlightSection = styled.div`
   }
   border-bottom: 1px solid white;
   @media (max-width: 1080px) {
-    padding: 0 70px;
+    padding: 1rem;
     height: 180px;
     flex-direction: column;
     justify-content: center;
@@ -69,9 +74,9 @@ const ChooseFlightSection = styled.div`
 const CompanyInfo = styled.div`
   display: flex;
   align-items: center;
-  width: 15%;
+  flex: 0 0 25%;
   @media (max-width: 1080px) {
-    width: 30%;
+    width: auto;
   }
 `
 const CompanyLogoImg = styled.img`
@@ -88,7 +93,6 @@ const DateBox = styled.div`
   justify-content: center;
   align-items: center;
   line-height: 2em;
-  width: 165px;
   height: 68%;
   @media (max-width: 1080px) {
     height: auto;
@@ -98,10 +102,14 @@ const DateBox = styled.div`
 const FlightDurationP = styled.p`
   font-size: 14px;
   color: gray;
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `
 const TimeP = styled.p`
   font-weight: bold;
   font-size: 20px;
+  white-space: nowrap;
 `
 const BookBtn = styled(Link)`
   border: 3px solid #d30000;
@@ -129,10 +137,11 @@ const StopsIndicator = styled.div`
   flex-direction: column;
   width: 165px;
   height: 68%;
+  margin: 0 0.5rem;
   @media (max-width: 1080px) {
-    width: 190px;
+    width: auto;
     height: auto;
-    margin-bottom: 9px;
+    justify-content: center;
   }
 `
 const StopsDiv = styled.div`
@@ -142,7 +151,7 @@ const StopsDiv = styled.div`
   justify-content: space-between;
   margin-bottom: 28px;
   @media (max-width: 1080px) {
-    margin-bottom: 15px;
+    margin-bottom: 0;
   }
 `
 const StopsP = styled.p`
@@ -161,10 +170,12 @@ const StopsP = styled.p`
 const Price = styled.div`
   display: flex;
   justify-content: center;
-  width: 10%;
+  margin-right: 2rem;
   @media (max-width: 1080px) {
     align-items: center;
-    width: 30%;
+    width: auto;
+    margin-bottom: 1rem;
+    margin-right: 0;
   }
 `
 const Spinner = styled.p`
@@ -174,16 +185,19 @@ const Spinner = styled.p`
   margin-top: 93px;
 `
 
-const AdaptiveSect = styled.div`
+const DatesInfoBlock = styled.div`
   display: flex;
-  justify-content: space-around;
+  margin: 1rem 0;
+`
+
+const ActionsBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 25%;
   @media (max-width: 1080px) {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    &:last-of-type {
-      margin-top: 25px;
-    }
+    flex-direction: column;
+    align-items: center;
   }
 `
 
@@ -243,14 +257,14 @@ const SearchResultContainer = ({ filteredData, incomingData }) => {
                       }
                       return (
                         <ChooseFlightSection key={el.id}>
-                          <AdaptiveSect>
-                            <CompanyInfo>
-                              <CompanyLogoImg
-                                src={el.flightCompanyLogo || "https://via.placeholder.com/150"}
-                                alt='Logo'
-                              />
-                              <StyledP>{el.flightCompany}</StyledP>
-                            </CompanyInfo>
+                          <CompanyInfo>
+                            <CompanyLogoImg
+                              src={el.flightCompanyLogo || "https://via.placeholder.com/150"}
+                              alt='Logo'
+                            />
+                            <StyledP>{el.flightCompany}</StyledP>
+                          </CompanyInfo>
+                          <DatesInfoBlock>
                             <DateBox>
                               <TimeP>{departureTime.toTimeString().slice(0, 5)}</TimeP>
                               <FlightDurationP>{departureTime.toDateString()}</FlightDurationP>
@@ -271,8 +285,8 @@ const SearchResultContainer = ({ filteredData, incomingData }) => {
                               <TimeP>{arrivalTime().toTimeString().slice(0, 5)}</TimeP>
                               <FlightDurationP>{arrivalTime().toDateString()}</FlightDurationP>
                             </DateBox>
-                          </AdaptiveSect>
-                          <AdaptiveSect>
+                          </DatesInfoBlock>
+                          <ActionsBox>
                             <Price>
                               <TimeP>
                                 {Math.ceil(el.price) + " "}
@@ -282,7 +296,7 @@ const SearchResultContainer = ({ filteredData, incomingData }) => {
                             <BookBtn to={`/orderPayment?price=${el.price}&priceCurrency=${el.priceCurrency}`}>
                               <BookP>Book Now</BookP>
                             </BookBtn>
-                          </AdaptiveSect>
+                          </ActionsBox>
                         </ChooseFlightSection>
                       )
                     })}
