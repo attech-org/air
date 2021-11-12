@@ -32,6 +32,10 @@ const Background = styled.div`
   backdrop-filter: blur(3px);
   margin: 30px 150px 30px 150px;
   padding: 45px 50px 0 50px;
+  @media (max-width: 1080px) {
+    margin: 20px 30px 20px 30px;
+    padding: 21px 15px 0 15px;
+  }
 `
 
 const BtnBox = styled.div`
@@ -66,10 +70,26 @@ const BottomSection = styled.section`
   display: flex;
   justify-content: space-between;
   margin-top: 43vh;
+
+  @media (max-width: 1080px) {
+    display: flex;
+    flex-direction: column;
+    margin-top: 58vh;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    line-height: 6.5em;
+    position: fixed;
+  }
 `
 const InfoBox = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 1080px) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 `
 const StyledA = styled.a`
   color: inherit;
@@ -92,7 +112,7 @@ const StyledWikiA = styled(StyledA)`
   }
 `
 
-const StyledP = styled.p`
+const StyledP = styled.div`
   color: white;
   font-size: 14px;
   transition: 0.3s;
@@ -100,6 +120,11 @@ const StyledP = styled.p`
     color: black;
   }
   margin-left: 65px;
+  width: 100%;
+  @media (max-width: 1080px) {
+    margin: 0;
+    left: 0;
+  }
 `
 const Triangle = styled.div`
   width: 0;
