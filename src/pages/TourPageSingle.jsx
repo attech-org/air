@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import Layout from "../containers/Layout"
 import TourPageSingleContainer from "../containers/TourPageSingle"
 
-const SOURCE_URL = "https://my.api.mockaroo.com/tours/:id?key=6b9b6f90"
+const SOURCE_URL = "https://my.api.mockaroo.com/tours/123?key=fd6742c0"
 const TourPageSingle = ({ tourId }) => {
   const [backendData, onBackendDataChange] = useState([])
 

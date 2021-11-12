@@ -17,7 +17,7 @@ export const Spinner = styled.div`
   font-size: 40px;
 `
 
-const SOURCE_URL = "https://api.mockaroo.com/api/febabdf0?count=50&key=6b9b6f90"
+const SOURCE_URL = "https://api.mockaroo.com/api/30ccff30?count=50&key=fd6742c0"
 
 const PostsContainer = () => {
   const [posts, onPostsChange] = useState([])
