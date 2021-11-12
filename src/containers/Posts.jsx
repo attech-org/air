@@ -7,6 +7,7 @@ const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color: white;
 `
 
 export const Spinner = styled.div`
